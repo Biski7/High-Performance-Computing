@@ -1,0 +1,1764 @@
+Computing live-in reg-units in ABI blocks.
+0B	%bb.0 DIL#0 DIH#0 HDI#0 SIL#0 SIH#0 HSI#0 DH#0 DL#0 HDX#0
+Created 9 new intervals.
+********** INTERVALS **********
+DH [0B,16r:0) 0@0B-phi
+DIL [0B,48r:0) 0@0B-phi
+DIH [0B,48r:0) 0@0B-phi
+DL [0B,16r:0) 0@0B-phi
+HDI [0B,48r:0) 0@0B-phi
+HDX [0B,16r:0) 0@0B-phi
+SIL [0B,32r:0) 0@0B-phi
+SIH [0B,32r:0) 0@0B-phi
+HSI [0B,32r:0) 0@0B-phi
+%0 [176r,304r:0)[400B,944B:0) 0@176r  weight:0.000000e+00
+%1 [208r,288B:0)[400B,944B:0) 0@208r  weight:0.000000e+00
+%2 [304r,320r:0)[320r,352r:1) 0@304r 1@320r  weight:0.000000e+00
+%3 [432r,832r:0) 0@432r  weight:0.000000e+00
+%4 [416r,512r:0) 0@416r  weight:0.000000e+00
+%5 [784r,800r:0)[800r,896r:1) 0@784r 1@800r  weight:0.000000e+00
+%6 [832r,848r:0)[848r,880r:1) 0@832r 1@848r  weight:0.000000e+00
+%7 [48r,128B:0)[160B,944B:0) 0@48r  weight:0.000000e+00
+%8 [32r,128B:0)[160B,944B:0) 0@32r  weight:0.000000e+00
+%9 [16r,128B:0)[160B,944B:0) 0@16r  weight:0.000000e+00
+%10 [80r,96r:0) 0@80r  weight:0.000000e+00
+%11 [64r,128B:0)[160B,944B:0) 0@64r  weight:0.000000e+00
+%12 [224r,240r:0) 0@224r  weight:0.000000e+00
+%14 [448r,464r:0) 0@448r  weight:0.000000e+00
+%15 [464r,480r:0)[480r,496r:1) 0@464r 1@480r  weight:0.000000e+00
+%16 [496r,512r:0)[512r,608r:1) 0@496r 1@512r  weight:0.000000e+00
+%17 [544r,560r:0) 0@544r  weight:0.000000e+00
+%18 [560r,576r:0)[576r,592r:1) 0@560r 1@576r  weight:0.000000e+00
+%19 [592r,608r:0)[608r,704r:1) 0@592r 1@608r  weight:0.000000e+00
+%20 [640r,656r:0) 0@640r  weight:0.000000e+00
+%21 [656r,672r:0)[672r,688r:1) 0@656r 1@672r  weight:0.000000e+00
+%22 [688r,704r:0)[704r,800r:1) 0@688r 1@704r  weight:0.000000e+00
+%23 [736r,752r:0) 0@736r  weight:0.000000e+00
+%24 [752r,768r:0)[768r,784r:1) 0@752r 1@768r  weight:0.000000e+00
+%27 [96r,128B:0)[160B,176r:2)[352r,400B:1) 0@96r 1@352r 2@160B-phi  weight:0.000000e+00
+%28 [240r,288B:0)[400B,432r:2)[880r,944B:1) 0@240r 1@880r 2@400B-phi  weight:0.000000e+00
+%29 [256r,288B:0)[400B,416r:2)[896r,944B:1) 0@256r 1@896r 2@400B-phi  weight:0.000000e+00
+RegMasks:
+********** MACHINEINSTRS **********
+# Machine code for function _Z7mat_vecPPiS_S_: NoPHIs, TracksLiveness, TiedOpsRewritten
+Function Live Ins: $rdi in %7, $rsi in %8, $rdx in %9
+
+0B	bb.0.entry:
+	  successors: %bb.2(0x80000000); %bb.2(100.00%)
+	  liveins: $rdi, $rsi, $rdx
+16B	  %9:gr64 = COPY $rdx
+32B	  %8:gr64 = COPY $rsi
+48B	  %7:gr64 = COPY $rdi
+64B	  %11:gr32 = MOV32r0 implicit-def dead $eflags
+80B	  %10:gr64 = SUBREG_TO_REG 0, %11:gr32, %subreg.sub_32bit
+96B	  %27:gr64_nosp = COPY %10:gr64
+112B	  JMP_1 %bb.2
+
+128B	bb.1.for.cond.cleanup:
+	; predecessors: %bb.3
+
+144B	  RET 0
+
+160B	bb.2.for.body:
+	; predecessors: %bb.0, %bb.3
+	  successors: %bb.4(0x80000000); %bb.4(100.00%)
+
+176B	  %0:gr64_nosp = COPY %27:gr64_nosp
+192B	  MOV32mi %9:gr64, 4, %0:gr64_nosp, 0, $noreg, 0 :: (store (s32) into %ir.arrayidx, !tbaa !5)
+208B	  %1:gr64 = MOV64rm %7:gr64, 8, %0:gr64_nosp, 0, $noreg :: (load (s64) from %ir.arrayidx6, !tbaa !9)
+224B	  %12:gr64 = SUBREG_TO_REG 0, %11:gr32, %subreg.sub_32bit
+240B	  %28:gr64_nosp = COPY %12:gr64
+256B	  %29:gr32 = COPY %11:gr32
+272B	  JMP_1 %bb.4
+
+288B	bb.3.for.cond.cleanup3:
+	; predecessors: %bb.4
+	  successors: %bb.1(0x04000000), %bb.2(0x7c000000); %bb.1(3.12%), %bb.2(96.88%)
+
+304B	  %2:gr64_nosp = COPY %0:gr64_nosp
+320B	  %2:gr64_nosp = nuw nsw INC64r %2:gr64_nosp(tied-def 0), implicit-def dead $eflags
+336B	  CMP64ri32 %2:gr64_nosp, 2048, implicit-def $eflags
+352B	  %27:gr64_nosp = COPY %2:gr64_nosp
+368B	  JCC_1 %bb.1, 4, implicit killed $eflags
+384B	  JMP_1 %bb.2
+
+400B	bb.4.for.body4:
+	; predecessors: %bb.2, %bb.4
+	  successors: %bb.3(0x04000000), %bb.4(0x7c000000); %bb.3(3.12%), %bb.4(96.88%)
+
+416B	  %4:gr32 = COPY %29:gr32
+432B	  %3:gr64_nosp = COPY %28:gr64_nosp
+448B	  %14:gr32 = MOV32rm %8:gr64, 4, %3:gr64_nosp, 0, $noreg :: (load (s32) from %ir.sunkaddr47, !tbaa !5)
+464B	  %15:gr32 = COPY %14:gr32
+480B	  %15:gr32 = nsw IMUL32rm %15:gr32(tied-def 0), %1:gr64, 4, %3:gr64_nosp, 0, $noreg, implicit-def dead $eflags :: (load (s32) from %ir.sunkaddr45, !tbaa !5)
+496B	  %16:gr32 = COPY %15:gr32
+512B	  %16:gr32 = nsw ADD32rr %16:gr32(tied-def 0), %4:gr32, implicit-def dead $eflags
+528B	  MOV32mr %9:gr64, 4, %0:gr64_nosp, 0, $noreg, %16:gr32 :: (store (s32) into %ir.sunkaddr49, !tbaa !5)
+544B	  %17:gr32 = MOV32rm %8:gr64, 4, %3:gr64_nosp, 4, $noreg :: (load (s32) from %ir.sunkaddr55, !tbaa !5)
+560B	  %18:gr32 = COPY %17:gr32
+576B	  %18:gr32 = nsw IMUL32rm %18:gr32(tied-def 0), %1:gr64, 4, %3:gr64_nosp, 4, $noreg, implicit-def dead $eflags :: (load (s32) from %ir.sunkaddr52, !tbaa !5)
+592B	  %19:gr32 = COPY %18:gr32
+608B	  %19:gr32 = nsw ADD32rr %19:gr32(tied-def 0), %16:gr32, implicit-def dead $eflags
+624B	  MOV32mr %9:gr64, 4, %0:gr64_nosp, 0, $noreg, %19:gr32 :: (store (s32) into %ir.sunkaddr49, !tbaa !5)
+640B	  %20:gr32 = MOV32rm %8:gr64, 4, %3:gr64_nosp, 8, $noreg :: (load (s32) from %ir.sunkaddr61, !tbaa !5)
+656B	  %21:gr32 = COPY %20:gr32
+672B	  %21:gr32 = nsw IMUL32rm %21:gr32(tied-def 0), %1:gr64, 4, %3:gr64_nosp, 8, $noreg, implicit-def dead $eflags :: (load (s32) from %ir.sunkaddr58, !tbaa !5)
+688B	  %22:gr32 = COPY %21:gr32
+704B	  %22:gr32 = nsw ADD32rr %22:gr32(tied-def 0), %19:gr32, implicit-def dead $eflags
+720B	  MOV32mr %9:gr64, 4, %0:gr64_nosp, 0, $noreg, %22:gr32 :: (store (s32) into %ir.sunkaddr49, !tbaa !5)
+736B	  %23:gr32 = MOV32rm %8:gr64, 4, %3:gr64_nosp, 12, $noreg :: (load (s32) from %ir.sunkaddr67, !tbaa !5)
+752B	  %24:gr32 = COPY %23:gr32
+768B	  %24:gr32 = nsw IMUL32rm %24:gr32(tied-def 0), %1:gr64, 4, %3:gr64_nosp, 12, $noreg, implicit-def dead $eflags :: (load (s32) from %ir.sunkaddr64, !tbaa !5)
+784B	  %5:gr32 = COPY %24:gr32
+800B	  %5:gr32 = nsw ADD32rr %5:gr32(tied-def 0), %22:gr32, implicit-def dead $eflags
+816B	  MOV32mr %9:gr64, 4, %0:gr64_nosp, 0, $noreg, %5:gr32 :: (store (s32) into %ir.sunkaddr49, !tbaa !5)
+832B	  %6:gr64_nosp = COPY %3:gr64_nosp
+848B	  %6:gr64_nosp = nuw nsw ADD64ri8 %6:gr64_nosp(tied-def 0), 4, implicit-def dead $eflags
+864B	  CMP64ri32 %6:gr64_nosp, 2048, implicit-def $eflags
+880B	  %28:gr64_nosp = COPY %6:gr64_nosp
+896B	  %29:gr32 = COPY %5:gr32
+912B	  JCC_1 %bb.3, 4, implicit killed $eflags
+928B	  JMP_1 %bb.4
+
+# End machine code for function _Z7mat_vecPPiS_S_.
+
+********** SIMPLE REGISTER COALESCING **********
+********** Function: _Z7mat_vecPPiS_S_
+********** JOINING INTERVALS ***********
+for.body4:
+416B	%4:gr32 = COPY %29:gr32
+	Considering merging to GR32 with %4 in %29
+		RHS = %4 [416r,512r:0) 0@416r  weight:0.000000e+00
+		LHS = %29 [256r,288B:0)[400B,416r:2)[896r,944B:1) 0@256r 1@896r 2@400B-phi  weight:0.000000e+00
+		merge %4:0@416r into %29:2@400B --> @400B
+		erased:	416r	%4:gr32 = COPY %29:gr32
+AllocationOrder(GR32) = [ $eax $ecx $edx $esi $edi $r8d $r9d $r10d $r11d $ebx $ebp $r14d $r15d $r12d $r13d ]
+		updated: 512B	%16:gr32 = nsw ADD32rr %16:gr32(tied-def 0), %29:gr32, implicit-def dead $eflags
+	Success: %4 -> %29
+	Result = %29 [256r,288B:0)[400B,512r:2)[896r,944B:1) 0@256r 1@896r 2@400B-phi  weight:0.000000e+00
+432B	%3:gr64_nosp = COPY %28:gr64_nosp
+	Considering merging to GR64_NOSP with %3 in %28
+		RHS = %3 [432r,832r:0) 0@432r  weight:0.000000e+00
+		LHS = %28 [240r,288B:0)[400B,432r:2)[880r,944B:1) 0@240r 1@880r 2@400B-phi  weight:0.000000e+00
+		merge %3:0@432r into %28:2@400B --> @400B
+		erased:	432r	%3:gr64_nosp = COPY %28:gr64_nosp
+AllocationOrder(GR64) = [ $rax $rcx $rdx $rsi $rdi $r8 $r9 $r10 $r11 $rbx $r14 $r15 $r12 $r13 $rbp ]
+AllocationOrder(GR64_NOSP) = [ $rax $rcx $rdx $rsi $rdi $r8 $r9 $r10 $r11 $rbx $r14 $r15 $r12 $r13 $rbp ]
+		updated: 448B	%14:gr32 = MOV32rm %8:gr64, 4, %28:gr64_nosp, 0, $noreg :: (load (s32) from %ir.sunkaddr47, !tbaa !5)
+		updated: 480B	%15:gr32 = nsw IMUL32rm %15:gr32(tied-def 0), %1:gr64, 4, %28:gr64_nosp, 0, $noreg, implicit-def dead $eflags :: (load (s32) from %ir.sunkaddr45, !tbaa !5)
+		updated: 544B	%17:gr32 = MOV32rm %8:gr64, 4, %28:gr64_nosp, 4, $noreg :: (load (s32) from %ir.sunkaddr55, !tbaa !5)
+		updated: 576B	%18:gr32 = nsw IMUL32rm %18:gr32(tied-def 0), %1:gr64, 4, %28:gr64_nosp, 4, $noreg, implicit-def dead $eflags :: (load (s32) from %ir.sunkaddr52, !tbaa !5)
+		updated: 640B	%20:gr32 = MOV32rm %8:gr64, 4, %28:gr64_nosp, 8, $noreg :: (load (s32) from %ir.sunkaddr61, !tbaa !5)
+		updated: 672B	%21:gr32 = nsw IMUL32rm %21:gr32(tied-def 0), %1:gr64, 4, %28:gr64_nosp, 8, $noreg, implicit-def dead $eflags :: (load (s32) from %ir.sunkaddr58, !tbaa !5)
+		updated: 736B	%23:gr32 = MOV32rm %8:gr64, 4, %28:gr64_nosp, 12, $noreg :: (load (s32) from %ir.sunkaddr67, !tbaa !5)
+		updated: 768B	%24:gr32 = nsw IMUL32rm %24:gr32(tied-def 0), %1:gr64, 4, %28:gr64_nosp, 12, $noreg, implicit-def dead $eflags :: (load (s32) from %ir.sunkaddr64, !tbaa !5)
+		updated: 832B	%6:gr64_nosp = COPY %28:gr64_nosp
+	Success: %3 -> %28
+	Result = %28 [240r,288B:0)[400B,832r:2)[880r,944B:1) 0@240r 1@880r 2@400B-phi  weight:0.000000e+00
+464B	%15:gr32 = COPY %14:gr32
+	Considering merging to GR32 with %14 in %15
+		RHS = %14 [448r,464r:0) 0@448r  weight:0.000000e+00
+		LHS = %15 [464r,480r:0)[480r,496r:1) 0@464r 1@480r  weight:0.000000e+00
+		merge %15:0@464r into %14:0@448r --> @448r
+		erased:	464r	%15:gr32 = COPY %14:gr32
+		updated: 448B	%15:gr32 = MOV32rm %8:gr64, 4, %28:gr64_nosp, 0, $noreg :: (load (s32) from %ir.sunkaddr47, !tbaa !5)
+	Success: %14 -> %15
+	Result = %15 [448r,480r:0)[480r,496r:1) 0@448r 1@480r  weight:0.000000e+00
+496B	%16:gr32 = COPY %15:gr32
+	Considering merging to GR32 with %15 in %16
+		RHS = %15 [448r,480r:0)[480r,496r:1) 0@448r 1@480r  weight:0.000000e+00
+		LHS = %16 [496r,512r:0)[512r,608r:1) 0@496r 1@512r  weight:0.000000e+00
+		merge %16:0@496r into %15:1@480r --> @480r
+		erased:	496r	%16:gr32 = COPY %15:gr32
+		updated: 448B	%16:gr32 = MOV32rm %8:gr64, 4, %28:gr64_nosp, 0, $noreg :: (load (s32) from %ir.sunkaddr47, !tbaa !5)
+		updated: 480B	%16:gr32 = nsw IMUL32rm %16:gr32(tied-def 0), %1:gr64, 4, %28:gr64_nosp, 0, $noreg, implicit-def dead $eflags :: (load (s32) from %ir.sunkaddr45, !tbaa !5)
+	Success: %15 -> %16
+	Result = %16 [448r,480r:2)[480r,512r:0)[512r,608r:1) 0@480r 1@512r 2@448r  weight:0.000000e+00
+560B	%18:gr32 = COPY %17:gr32
+	Considering merging to GR32 with %17 in %18
+		RHS = %17 [544r,560r:0) 0@544r  weight:0.000000e+00
+		LHS = %18 [560r,576r:0)[576r,592r:1) 0@560r 1@576r  weight:0.000000e+00
+		merge %18:0@560r into %17:0@544r --> @544r
+		erased:	560r	%18:gr32 = COPY %17:gr32
+		updated: 544B	%18:gr32 = MOV32rm %8:gr64, 4, %28:gr64_nosp, 4, $noreg :: (load (s32) from %ir.sunkaddr55, !tbaa !5)
+	Success: %17 -> %18
+	Result = %18 [544r,576r:0)[576r,592r:1) 0@544r 1@576r  weight:0.000000e+00
+592B	%19:gr32 = COPY %18:gr32
+	Considering merging to GR32 with %18 in %19
+		RHS = %18 [544r,576r:0)[576r,592r:1) 0@544r 1@576r  weight:0.000000e+00
+		LHS = %19 [592r,608r:0)[608r,704r:1) 0@592r 1@608r  weight:0.000000e+00
+		merge %19:0@592r into %18:1@576r --> @576r
+		erased:	592r	%19:gr32 = COPY %18:gr32
+		updated: 544B	%19:gr32 = MOV32rm %8:gr64, 4, %28:gr64_nosp, 4, $noreg :: (load (s32) from %ir.sunkaddr55, !tbaa !5)
+		updated: 576B	%19:gr32 = nsw IMUL32rm %19:gr32(tied-def 0), %1:gr64, 4, %28:gr64_nosp, 4, $noreg, implicit-def dead $eflags :: (load (s32) from %ir.sunkaddr52, !tbaa !5)
+	Success: %18 -> %19
+	Result = %19 [544r,576r:2)[576r,608r:0)[608r,704r:1) 0@576r 1@608r 2@544r  weight:0.000000e+00
+656B	%21:gr32 = COPY %20:gr32
+	Considering merging to GR32 with %20 in %21
+		RHS = %20 [640r,656r:0) 0@640r  weight:0.000000e+00
+		LHS = %21 [656r,672r:0)[672r,688r:1) 0@656r 1@672r  weight:0.000000e+00
+		merge %21:0@656r into %20:0@640r --> @640r
+		erased:	656r	%21:gr32 = COPY %20:gr32
+		updated: 640B	%21:gr32 = MOV32rm %8:gr64, 4, %28:gr64_nosp, 8, $noreg :: (load (s32) from %ir.sunkaddr61, !tbaa !5)
+	Success: %20 -> %21
+	Result = %21 [640r,672r:0)[672r,688r:1) 0@640r 1@672r  weight:0.000000e+00
+688B	%22:gr32 = COPY %21:gr32
+	Considering merging to GR32 with %21 in %22
+		RHS = %21 [640r,672r:0)[672r,688r:1) 0@640r 1@672r  weight:0.000000e+00
+		LHS = %22 [688r,704r:0)[704r,800r:1) 0@688r 1@704r  weight:0.000000e+00
+		merge %22:0@688r into %21:1@672r --> @672r
+		erased:	688r	%22:gr32 = COPY %21:gr32
+		updated: 640B	%22:gr32 = MOV32rm %8:gr64, 4, %28:gr64_nosp, 8, $noreg :: (load (s32) from %ir.sunkaddr61, !tbaa !5)
+		updated: 672B	%22:gr32 = nsw IMUL32rm %22:gr32(tied-def 0), %1:gr64, 4, %28:gr64_nosp, 8, $noreg, implicit-def dead $eflags :: (load (s32) from %ir.sunkaddr58, !tbaa !5)
+	Success: %21 -> %22
+	Result = %22 [640r,672r:2)[672r,704r:0)[704r,800r:1) 0@672r 1@704r 2@640r  weight:0.000000e+00
+752B	%24:gr32 = COPY %23:gr32
+	Considering merging to GR32 with %23 in %24
+		RHS = %23 [736r,752r:0) 0@736r  weight:0.000000e+00
+		LHS = %24 [752r,768r:0)[768r,784r:1) 0@752r 1@768r  weight:0.000000e+00
+		merge %24:0@752r into %23:0@736r --> @736r
+		erased:	752r	%24:gr32 = COPY %23:gr32
+		updated: 736B	%24:gr32 = MOV32rm %8:gr64, 4, %28:gr64_nosp, 12, $noreg :: (load (s32) from %ir.sunkaddr67, !tbaa !5)
+	Success: %23 -> %24
+	Result = %24 [736r,768r:0)[768r,784r:1) 0@736r 1@768r  weight:0.000000e+00
+784B	%5:gr32 = COPY %24:gr32
+	Considering merging to GR32 with %24 in %5
+		RHS = %24 [736r,768r:0)[768r,784r:1) 0@736r 1@768r  weight:0.000000e+00
+		LHS = %5 [784r,800r:0)[800r,896r:1) 0@784r 1@800r  weight:0.000000e+00
+		merge %5:0@784r into %24:1@768r --> @768r
+		erased:	784r	%5:gr32 = COPY %24:gr32
+		updated: 736B	%5:gr32 = MOV32rm %8:gr64, 4, %28:gr64_nosp, 12, $noreg :: (load (s32) from %ir.sunkaddr67, !tbaa !5)
+		updated: 768B	%5:gr32 = nsw IMUL32rm %5:gr32(tied-def 0), %1:gr64, 4, %28:gr64_nosp, 12, $noreg, implicit-def dead $eflags :: (load (s32) from %ir.sunkaddr64, !tbaa !5)
+	Success: %24 -> %5
+	Result = %5 [736r,768r:2)[768r,800r:0)[800r,896r:1) 0@768r 1@800r 2@736r  weight:0.000000e+00
+832B	%6:gr64_nosp = COPY %28:gr64_nosp
+	Considering merging to GR64_NOSP with %6 in %28
+		RHS = %6 [832r,848r:0)[848r,880r:1) 0@832r 1@848r  weight:0.000000e+00
+		LHS = %28 [240r,288B:0)[400B,832r:2)[880r,944B:1) 0@240r 1@880r 2@400B-phi  weight:0.000000e+00
+		merge %28:1@880r into %6:1@848r --> @848r
+		merge %6:0@832r into %28:2@400B --> @400B
+		erased:	880r	%28:gr64_nosp = COPY %6:gr64_nosp
+		erased:	832r	%6:gr64_nosp = COPY %28:gr64_nosp
+		updated: 848B	%28:gr64_nosp = nuw nsw ADD64ri8 %28:gr64_nosp(tied-def 0), 4, implicit-def dead $eflags
+		updated: 864B	CMP64ri32 %28:gr64_nosp, 2048, implicit-def $eflags
+	Success: %6 -> %28
+	Result = %28 [240r,288B:0)[400B,848r:2)[848r,944B:1) 0@240r 1@848r 2@400B-phi  weight:0.000000e+00
+896B	%29:gr32 = COPY %5:gr32
+	Considering merging to GR32 with %5 in %29
+		RHS = %5 [736r,768r:2)[768r,800r:0)[800r,896r:1) 0@768r 1@800r 2@736r  weight:0.000000e+00
+		LHS = %29 [256r,288B:0)[400B,512r:2)[896r,944B:1) 0@256r 1@896r 2@400B-phi  weight:0.000000e+00
+		merge %29:1@896r into %5:1@800r --> @800r
+		erased:	896r	%29:gr32 = COPY %5:gr32
+		updated: 768B	%29:gr32 = nsw IMUL32rm %29:gr32(tied-def 0), %1:gr64, 4, %28:gr64_nosp, 12, $noreg, implicit-def dead $eflags :: (load (s32) from %ir.sunkaddr64, !tbaa !5)
+		updated: 736B	%29:gr32 = MOV32rm %8:gr64, 4, %28:gr64_nosp, 12, $noreg :: (load (s32) from %ir.sunkaddr67, !tbaa !5)
+		updated: 800B	%29:gr32 = nsw ADD32rr %29:gr32(tied-def 0), %22:gr32, implicit-def dead $eflags
+		updated: 816B	MOV32mr %9:gr64, 4, %0:gr64_nosp, 0, $noreg, %29:gr32 :: (store (s32) into %ir.sunkaddr49, !tbaa !5)
+	Success: %5 -> %29
+	Result = %29 [256r,288B:0)[400B,512r:2)[736r,768r:4)[768r,800r:3)[800r,944B:1) 0@256r 1@800r 2@400B-phi 3@768r 4@736r  weight:0.000000e+00
+for.body:
+176B	%0:gr64_nosp = COPY %27:gr64_nosp
+	Considering merging to GR64_NOSP with %0 in %27
+		RHS = %0 [176r,304r:0)[400B,944B:0) 0@176r  weight:0.000000e+00
+		LHS = %27 [96r,128B:0)[160B,176r:2)[352r,400B:1) 0@96r 1@352r 2@160B-phi  weight:0.000000e+00
+		merge %0:0@176r into %27:2@160B --> @160B
+		erased:	176r	%0:gr64_nosp = COPY %27:gr64_nosp
+		updated: 192B	MOV32mi %9:gr64, 4, %27:gr64_nosp, 0, $noreg, 0 :: (store (s32) into %ir.arrayidx, !tbaa !5)
+		updated: 208B	%1:gr64 = MOV64rm %7:gr64, 8, %27:gr64_nosp, 0, $noreg :: (load (s64) from %ir.arrayidx6, !tbaa !9)
+		updated: 528B	MOV32mr %9:gr64, 4, %27:gr64_nosp, 0, $noreg, %16:gr32 :: (store (s32) into %ir.sunkaddr49, !tbaa !5)
+		updated: 624B	MOV32mr %9:gr64, 4, %27:gr64_nosp, 0, $noreg, %19:gr32 :: (store (s32) into %ir.sunkaddr49, !tbaa !5)
+		updated: 720B	MOV32mr %9:gr64, 4, %27:gr64_nosp, 0, $noreg, %22:gr32 :: (store (s32) into %ir.sunkaddr49, !tbaa !5)
+		updated: 816B	MOV32mr %9:gr64, 4, %27:gr64_nosp, 0, $noreg, %29:gr32 :: (store (s32) into %ir.sunkaddr49, !tbaa !5)
+		updated: 304B	%2:gr64_nosp = COPY %27:gr64_nosp
+	Success: %0 -> %27
+	Result = %27 [96r,128B:0)[160B,304r:2)[352r,400B:1)[400B,944B:2) 0@96r 1@352r 2@160B-phi  weight:0.000000e+00
+224B	%12:gr64 = SUBREG_TO_REG 0, %11:gr32, %subreg.sub_32bit
+	Considering merging to GR64_with_sub_8bit with %11 in %12:sub_32bit
+		RHS = %11 [64r,128B:0)[160B,944B:0) 0@64r  weight:0.000000e+00
+		LHS = %12 [224r,240r:0) 0@224r  weight:0.000000e+00
+		merge %12:0@224r into %11:0@64r --> @64r
+		erased:	224r	%12:gr64 = SUBREG_TO_REG 0, %11:gr32, %subreg.sub_32bit
+AllocationOrder(GR64_with_sub_8bit) = [ $rax $rcx $rdx $rsi $rdi $r8 $r9 $r10 $r11 $rbx $r14 $r15 $r12 $r13 $rbp ]
+		updated: 64B	undef %12.sub_32bit:gr64_with_sub_8bit = MOV32r0 implicit-def dead $eflags
+		updated: 80B	%10:gr64 = SUBREG_TO_REG 0, %12.sub_32bit:gr64_with_sub_8bit, %subreg.sub_32bit
+		updated: 256B	%29:gr32 = COPY %12.sub_32bit:gr64_with_sub_8bit
+	Success: %11:sub_32bit -> %12
+	Result = %12 [64r,128B:0)[160B,944B:0) 0@64r  weight:0.000000e+00
+256B	%29:gr32 = COPY %12.sub_32bit:gr64_with_sub_8bit
+	Considering merging to GR64_with_sub_8bit with %29 in %12:sub_32bit
+		RHS = %29 [256r,288B:0)[400B,512r:2)[736r,768r:4)[768r,800r:3)[800r,944B:1) 0@256r 1@800r 2@400B-phi 3@768r 4@736r  weight:0.000000e+00
+		LHS = %12 [64r,128B:0)[160B,944B:0) 0@64r  weight:0.000000e+00
+		merge %29:0@256r into %12:0@64r --> @64r
+		interference at %29:1@800r
+		updated: 256B	%29:gr32 = MOV32r0 implicit-def dead $eflags
+		updated: 800B	%29:gr32 = nsw ADD32rr %29:gr32(tied-def 0), %22:gr32, implicit-def dead $eflags
+		updated: 736B	%29:gr32 = MOV32rm %8:gr64, 4, %28:gr64_nosp, 12, $noreg :: (load (s32) from %ir.sunkaddr67, !tbaa !5)
+		updated: 768B	%29:gr32 = nsw IMUL32rm %29:gr32(tied-def 0), %1:gr64, 4, %28:gr64_nosp, 12, $noreg, implicit-def dead $eflags :: (load (s32) from %ir.sunkaddr64, !tbaa !5)
+		updated: 512B	%16:gr32 = nsw ADD32rr %16:gr32(tied-def 0), %29:gr32, implicit-def dead $eflags
+		updated: 816B	MOV32mr %9:gr64, 4, %27:gr64_nosp, 0, $noreg, %29:gr32 :: (store (s32) into %ir.sunkaddr49, !tbaa !5)
+Remat: %29:gr32 = MOV32r0 implicit-def dead $eflags
+Shrink: %12 [64r,128B:0)[160B,944B:0) 0@64r  weight:0.000000e+00
+ live-in at 160B
+ live-in at 288B
+ live-in at 400B
+Shrunk: %12 [64r,128B:0)[160B,944B:0) 0@64r  weight:0.000000e+00
+for.cond.cleanup3:
+240B	%28:gr64_nosp = COPY %12:gr64_with_sub_8bit
+	Considering merging to GR64_NOSP with %12 in %28
+		RHS = %12 [64r,128B:0)[160B,944B:0) 0@64r  weight:0.000000e+00
+		LHS = %28 [240r,288B:0)[400B,848r:2)[848r,944B:1) 0@240r 1@848r 2@400B-phi  weight:0.000000e+00
+		merge %28:0@240r into %12:0@64r --> @64r
+		interference at %28:1@848r
+		updated: 240B	undef %28.sub_32bit:gr64_nosp = MOV32r0 implicit-def dead $eflags
+		updated: 848B	%28:gr64_nosp = nuw nsw ADD64ri8 %28:gr64_nosp(tied-def 0), 4, implicit-def dead $eflags
+		updated: 448B	%16:gr32 = MOV32rm %8:gr64, 4, %28:gr64_nosp, 0, $noreg :: (load (s32) from %ir.sunkaddr47, !tbaa !5)
+		updated: 480B	%16:gr32 = nsw IMUL32rm %16:gr32(tied-def 0), %1:gr64, 4, %28:gr64_nosp, 0, $noreg, implicit-def dead $eflags :: (load (s32) from %ir.sunkaddr45, !tbaa !5)
+		updated: 544B	%19:gr32 = MOV32rm %8:gr64, 4, %28:gr64_nosp, 4, $noreg :: (load (s32) from %ir.sunkaddr55, !tbaa !5)
+		updated: 576B	%19:gr32 = nsw IMUL32rm %19:gr32(tied-def 0), %1:gr64, 4, %28:gr64_nosp, 4, $noreg, implicit-def dead $eflags :: (load (s32) from %ir.sunkaddr52, !tbaa !5)
+		updated: 640B	%22:gr32 = MOV32rm %8:gr64, 4, %28:gr64_nosp, 8, $noreg :: (load (s32) from %ir.sunkaddr61, !tbaa !5)
+		updated: 672B	%22:gr32 = nsw IMUL32rm %22:gr32(tied-def 0), %1:gr64, 4, %28:gr64_nosp, 8, $noreg, implicit-def dead $eflags :: (load (s32) from %ir.sunkaddr58, !tbaa !5)
+		updated: 736B	%29:gr32 = MOV32rm %8:gr64, 4, %28:gr64_nosp, 12, $noreg :: (load (s32) from %ir.sunkaddr67, !tbaa !5)
+		updated: 768B	%29:gr32 = nsw IMUL32rm %29:gr32(tied-def 0), %1:gr64, 4, %28:gr64_nosp, 12, $noreg, implicit-def dead $eflags :: (load (s32) from %ir.sunkaddr64, !tbaa !5)
+		updated: 864B	CMP64ri32 %28:gr64_nosp, 2048, implicit-def $eflags
+Remat: undef %28.sub_32bit:gr64_nosp = MOV32r0 implicit-def dead $eflags
+Shrink: %12 [64r,128B:0)[160B,944B:0) 0@64r  weight:0.000000e+00
+Shrunk: %12 [64r,80r:0) 0@64r  weight:0.000000e+00
+304B	%2:gr64_nosp = COPY %27:gr64_nosp
+	Considering merging to GR64_NOSP with %2 in %27
+		RHS = %2 [304r,320r:0)[320r,352r:1) 0@304r 1@320r  weight:0.000000e+00
+		LHS = %27 [96r,128B:0)[160B,304r:2)[352r,400B:1)[400B,944B:2) 0@96r 1@352r 2@160B-phi  weight:0.000000e+00
+		merge %27:1@352r into %2:1@320r --> @320r
+		merge %2:0@304r into %27:2@160B --> @160B
+		erased:	352r	%27:gr64_nosp = COPY %2:gr64_nosp
+		erased:	304r	%2:gr64_nosp = COPY %27:gr64_nosp
+		updated: 320B	%27:gr64_nosp = nuw nsw INC64r %27:gr64_nosp(tied-def 0), implicit-def dead $eflags
+		updated: 336B	CMP64ri32 %27:gr64_nosp, 2048, implicit-def $eflags
+	Success: %2 -> %27
+	Result = %27 [96r,128B:0)[160B,320r:2)[320r,400B:1)[400B,944B:2) 0@96r 1@320r 2@160B-phi  weight:0.000000e+00
+entry:
+16B	%9:gr64 = COPY $rdx
+	Considering merging %9 with $rdx
+	Can only merge into reserved registers.
+32B	%8:gr64 = COPY $rsi
+	Considering merging %8 with $rsi
+	Can only merge into reserved registers.
+48B	%7:gr64 = COPY $rdi
+	Considering merging %7 with $rdi
+	Can only merge into reserved registers.
+80B	%10:gr64 = SUBREG_TO_REG 0, %12.sub_32bit:gr64_with_sub_8bit, %subreg.sub_32bit
+	Considering merging to GR64_with_sub_8bit with %12 in %10
+		RHS = %12 [64r,80r:0) 0@64r  weight:0.000000e+00
+		LHS = %10 [80r,96r:0) 0@80r  weight:0.000000e+00
+		merge %10:0@80r into %12:0@64r --> @64r
+		erased:	80r	%10:gr64 = SUBREG_TO_REG 0, %12.sub_32bit:gr64_with_sub_8bit, %subreg.sub_32bit
+		updated: 64B	undef %10.sub_32bit:gr64_with_sub_8bit = MOV32r0 implicit-def dead $eflags
+	Success: %12 -> %10
+	Result = %10 [64r,96r:0) 0@64r  weight:0.000000e+00
+for.cond.cleanup:
+96B	%27:gr64_nosp = COPY %10:gr64_with_sub_8bit
+	Considering merging to GR64_NOSP with %10 in %27
+		RHS = %10 [64r,96r:0) 0@64r  weight:0.000000e+00
+		LHS = %27 [96r,128B:0)[160B,320r:2)[320r,400B:1)[400B,944B:2) 0@96r 1@320r 2@160B-phi  weight:0.000000e+00
+		merge %27:0@96r into %10:0@64r --> @64r
+		erased:	96r	%27:gr64_nosp = COPY %10:gr64_with_sub_8bit
+		updated: 64B	undef %27.sub_32bit:gr64_nosp = MOV32r0 implicit-def dead $eflags
+	Success: %10 -> %27
+	Result = %27 [64r,128B:0)[160B,320r:2)[320r,400B:1)[400B,944B:2) 0@64r 1@320r 2@160B-phi  weight:0.000000e+00
+Trying to inflate 0 regs.
+********** INTERVALS **********
+DH [0B,16r:0) 0@0B-phi
+DIL [0B,48r:0) 0@0B-phi
+DIH [0B,48r:0) 0@0B-phi
+DL [0B,16r:0) 0@0B-phi
+HDI [0B,48r:0) 0@0B-phi
+HDX [0B,16r:0) 0@0B-phi
+SIL [0B,32r:0) 0@0B-phi
+SIH [0B,32r:0) 0@0B-phi
+HSI [0B,32r:0) 0@0B-phi
+%1 [208r,288B:0)[400B,944B:0) 0@208r  weight:0.000000e+00
+%7 [48r,128B:0)[160B,944B:0) 0@48r  weight:0.000000e+00
+%8 [32r,128B:0)[160B,944B:0) 0@32r  weight:0.000000e+00
+%9 [16r,128B:0)[160B,944B:0) 0@16r  weight:0.000000e+00
+%16 [448r,480r:2)[480r,512r:0)[512r,608r:1) 0@480r 1@512r 2@448r  weight:0.000000e+00
+%19 [544r,576r:2)[576r,608r:0)[608r,704r:1) 0@576r 1@608r 2@544r  weight:0.000000e+00
+%22 [640r,672r:2)[672r,704r:0)[704r,800r:1) 0@672r 1@704r 2@640r  weight:0.000000e+00
+%27 [64r,128B:0)[160B,320r:2)[320r,400B:1)[400B,944B:2) 0@64r 1@320r 2@160B-phi  weight:0.000000e+00
+%28 [240r,288B:0)[400B,848r:2)[848r,944B:1) 0@240r 1@848r 2@400B-phi  weight:0.000000e+00
+%29 [256r,288B:0)[400B,512r:2)[736r,768r:4)[768r,800r:3)[800r,944B:1) 0@256r 1@800r 2@400B-phi 3@768r 4@736r  weight:0.000000e+00
+RegMasks:
+********** MACHINEINSTRS **********
+# Machine code for function _Z7mat_vecPPiS_S_: NoPHIs, TracksLiveness, TiedOpsRewritten
+Function Live Ins: $rdi in %7, $rsi in %8, $rdx in %9
+
+0B	bb.0.entry:
+	  successors: %bb.2(0x80000000); %bb.2(100.00%)
+	  liveins: $rdi, $rsi, $rdx
+16B	  %9:gr64 = COPY $rdx
+32B	  %8:gr64 = COPY $rsi
+48B	  %7:gr64 = COPY $rdi
+64B	  undef %27.sub_32bit:gr64_nosp = MOV32r0 implicit-def dead $eflags
+112B	  JMP_1 %bb.2
+
+128B	bb.1.for.cond.cleanup:
+	; predecessors: %bb.3
+
+144B	  RET 0
+
+160B	bb.2.for.body:
+	; predecessors: %bb.0, %bb.3
+	  successors: %bb.4(0x80000000); %bb.4(100.00%)
+
+192B	  MOV32mi %9:gr64, 4, %27:gr64_nosp, 0, $noreg, 0 :: (store (s32) into %ir.arrayidx, !tbaa !5)
+208B	  %1:gr64 = MOV64rm %7:gr64, 8, %27:gr64_nosp, 0, $noreg :: (load (s64) from %ir.arrayidx6, !tbaa !9)
+240B	  undef %28.sub_32bit:gr64_nosp = MOV32r0 implicit-def dead $eflags
+256B	  %29:gr32 = MOV32r0 implicit-def dead $eflags
+272B	  JMP_1 %bb.4
+
+288B	bb.3.for.cond.cleanup3:
+	; predecessors: %bb.4
+	  successors: %bb.1(0x04000000), %bb.2(0x7c000000); %bb.1(3.12%), %bb.2(96.88%)
+
+320B	  %27:gr64_nosp = nuw nsw INC64r %27:gr64_nosp(tied-def 0), implicit-def dead $eflags
+336B	  CMP64ri32 %27:gr64_nosp, 2048, implicit-def $eflags
+368B	  JCC_1 %bb.1, 4, implicit killed $eflags
+384B	  JMP_1 %bb.2
+
+400B	bb.4.for.body4:
+	; predecessors: %bb.2, %bb.4
+	  successors: %bb.3(0x04000000), %bb.4(0x7c000000); %bb.3(3.12%), %bb.4(96.88%)
+
+448B	  %16:gr32 = MOV32rm %8:gr64, 4, %28:gr64_nosp, 0, $noreg :: (load (s32) from %ir.sunkaddr47, !tbaa !5)
+480B	  %16:gr32 = nsw IMUL32rm %16:gr32(tied-def 0), %1:gr64, 4, %28:gr64_nosp, 0, $noreg, implicit-def dead $eflags :: (load (s32) from %ir.sunkaddr45, !tbaa !5)
+512B	  %16:gr32 = nsw ADD32rr %16:gr32(tied-def 0), %29:gr32, implicit-def dead $eflags
+528B	  MOV32mr %9:gr64, 4, %27:gr64_nosp, 0, $noreg, %16:gr32 :: (store (s32) into %ir.sunkaddr49, !tbaa !5)
+544B	  %19:gr32 = MOV32rm %8:gr64, 4, %28:gr64_nosp, 4, $noreg :: (load (s32) from %ir.sunkaddr55, !tbaa !5)
+576B	  %19:gr32 = nsw IMUL32rm %19:gr32(tied-def 0), %1:gr64, 4, %28:gr64_nosp, 4, $noreg, implicit-def dead $eflags :: (load (s32) from %ir.sunkaddr52, !tbaa !5)
+608B	  %19:gr32 = nsw ADD32rr %19:gr32(tied-def 0), %16:gr32, implicit-def dead $eflags
+624B	  MOV32mr %9:gr64, 4, %27:gr64_nosp, 0, $noreg, %19:gr32 :: (store (s32) into %ir.sunkaddr49, !tbaa !5)
+640B	  %22:gr32 = MOV32rm %8:gr64, 4, %28:gr64_nosp, 8, $noreg :: (load (s32) from %ir.sunkaddr61, !tbaa !5)
+672B	  %22:gr32 = nsw IMUL32rm %22:gr32(tied-def 0), %1:gr64, 4, %28:gr64_nosp, 8, $noreg, implicit-def dead $eflags :: (load (s32) from %ir.sunkaddr58, !tbaa !5)
+704B	  %22:gr32 = nsw ADD32rr %22:gr32(tied-def 0), %19:gr32, implicit-def dead $eflags
+720B	  MOV32mr %9:gr64, 4, %27:gr64_nosp, 0, $noreg, %22:gr32 :: (store (s32) into %ir.sunkaddr49, !tbaa !5)
+736B	  %29:gr32 = MOV32rm %8:gr64, 4, %28:gr64_nosp, 12, $noreg :: (load (s32) from %ir.sunkaddr67, !tbaa !5)
+768B	  %29:gr32 = nsw IMUL32rm %29:gr32(tied-def 0), %1:gr64, 4, %28:gr64_nosp, 12, $noreg, implicit-def dead $eflags :: (load (s32) from %ir.sunkaddr64, !tbaa !5)
+800B	  %29:gr32 = nsw ADD32rr %29:gr32(tied-def 0), %22:gr32, implicit-def dead $eflags
+816B	  MOV32mr %9:gr64, 4, %27:gr64_nosp, 0, $noreg, %29:gr32 :: (store (s32) into %ir.sunkaddr49, !tbaa !5)
+848B	  %28:gr64_nosp = nuw nsw ADD64ri8 %28:gr64_nosp(tied-def 0), 4, implicit-def dead $eflags
+864B	  CMP64ri32 %28:gr64_nosp, 2048, implicit-def $eflags
+912B	  JCC_1 %bb.3, 4, implicit killed $eflags
+928B	  JMP_1 %bb.4
+
+# End machine code for function _Z7mat_vecPPiS_S_.
+
+AllocationOrder(GR32) = [ $eax $ecx $edx $esi $edi $r8d $r9d $r10d $r11d $ebx $ebp $r14d $r15d $r12d $r13d ]
+AllocationOrder(GR16) = [ $ax $cx $dx $si $di $r8w $r9w $r10w $r11w $bx $bp $r14w $r15w $r12w $r13w ]
+AllocationOrder(GR8) = [ $al $cl $dl $sil $dil $r8b $r9b $r10b $r11b $bl $bpl $r14b $r15b $r12b $r13b ]
+AllocationOrder(SEGMENT_REG) = [ ]
+AllocationOrder(GR32_BPSP) = [ $ebp ] (sub-class)
+AllocationOrder(GR32_BPSP) = [ $ebp ] (sub-class)
+AllocationOrder(GR32_BSI) = [ $esi $ebx ] (sub-class)
+AllocationOrder(GR32_BSI) = [ $esi $ebx ] (sub-class)
+AllocationOrder(GR32_DIBP) = [ $edi $ebp ] (sub-class)
+AllocationOrder(GR32_DIBP) = [ $edi $ebp ] (sub-class)
+AllocationOrder(RFP32) = [ $fp0 $fp1 $fp2 $fp3 $fp4 $fp5 $fp6 ]
+AllocationOrder(GR8_ABCD_H) = [ $ah $ch $dh $bh ] (sub-class)
+AllocationOrder(GR8_ABCD_L) = [ $al $cl $dl $bl ] (sub-class)
+AllocationOrder(VK1) = [ $k0 $k1 $k2 $k3 $k4 $k5 $k6 $k7 ]
+AllocationOrder(VR64) = [ $mm0 $mm1 $mm2 $mm3 $mm4 $mm5 $mm6 $mm7 ]
+AllocationOrder(TILE) = [ $tmm0 $tmm1 $tmm2 $tmm3 $tmm4 $tmm5 $tmm6 $tmm7 ]
+AllocationOrder(GR8_NOREX) = [ $al $cl $dl $bl ]
+AllocationOrder(GR64) = [ $rax $rcx $rdx $rsi $rdi $r8 $r9 $r10 $r11 $rbx $r14 $r15 $r12 $r13 $rbp ]
+AllocationOrder(GR64_NOREX_and_GR64_TCW64) = [ $rax $rcx $rdx ] (sub-class)
+AllocationOrder(GR64_NOREX_and_GR64_TCW64) = [ $rax $rcx $rdx ] (sub-class)
+AllocationOrder(FR16) = [ $xmm0 $xmm1 $xmm2 $xmm3 $xmm4 $xmm5 $xmm6 $xmm7 $xmm8 $xmm9 $xmm10 $xmm11 $xmm12 $xmm13 $xmm14 $xmm15 ]
+AllocationOrder(DEBUG_REG) = [ $dr0 $dr1 $dr2 $dr3 $dr4 $dr5 $dr6 $dr7 $dr8 $dr9 $dr10 $dr11 $dr12 $dr13 $dr14 $dr15 ]
+AllocationOrder(CONTROL_REG) = [ $cr0 $cr1 $cr2 $cr3 $cr4 $cr5 $cr6 $cr7 $cr8 $cr9 $cr10 $cr11 $cr12 $cr13 $cr14 $cr15 ]
+AllocationOrder(GR64_NOREX) = [ $rax $rcx $rdx $rsi $rdi $rbx $rbp ] (sub-class)
+AllocationOrder(GR64_TCW64) = [ $rax $rcx $rdx $r8 $r9 $r10 $r11 ] (sub-class)
+AllocationOrder(GR64_TCW64) = [ $rax $rcx $rdx $r8 $r9 $r10 $r11 ] (sub-class)
+AllocationOrder(GR8) = [ $al $cl $dl $sil $dil $r8b $r9b $r10b $r11b $bl $bpl $r14b $r15b $r12b $r13b ]
+AllocationOrder(GR8) = [ $al $cl $dl $sil $dil $r8b $r9b $r10b $r11b $bl $bpl $r14b $r15b $r12b $r13b ]
+AllocationOrder(GR8) = [ $al $cl $dl $sil $dil $r8b $r9b $r10b $r11b $bl $bpl $r14b $r15b $r12b $r13b ]
+AllocationOrder(GR64_TC) = [ $rax $rcx $rdx $rsi $rdi $r8 $r9 $r11 ] (sub-class)
+AllocationOrder(GR8) = [ $al $cl $dl $sil $dil $r8b $r9b $r10b $r11b $bl $bpl $r14b $r15b $r12b $r13b ]
+AllocationOrder(GR8) = [ $al $cl $dl $sil $dil $r8b $r9b $r10b $r11b $bl $bpl $r14b $r15b $r12b $r13b ]
+AllocationOrder(GR64_TC) = [ $rax $rcx $rdx $rsi $rdi $r8 $r9 $r11 ] (sub-class)
+AllocationOrder(GR8) = [ $al $cl $dl $sil $dil $r8b $r9b $r10b $r11b $bl $bpl $r14b $r15b $r12b $r13b ]
+AllocationOrder(GR8) = [ $al $cl $dl $sil $dil $r8b $r9b $r10b $r11b $bl $bpl $r14b $r15b $r12b $r13b ]
+AllocationOrder(GR64PLTSafe) = [ $rax $rcx $rdx $rsi $rdi $r8 $r9 $rbx $r14 $r15 $r12 $r13 $rbp ] (sub-class)
+AllocationOrder(FR16X) = [ $xmm0 $xmm1 $xmm2 $xmm3 $xmm4 $xmm5 $xmm6 $xmm7 $xmm8 $xmm9 $xmm10 $xmm11 $xmm12 $xmm13 $xmm14 $xmm15 ]
+AllocationOrder(LOW32_ADDR_ACCESS_RBP) = [ $eax $ecx $edx $esi $edi $r8d $r9d $r10d $r11d $ebx $ebp $r14d $r15d $r12d $r13d $rbp ]
+********** GREEDY REGISTER ALLOCATION **********
+********** Function: _Z7mat_vecPPiS_S_
+********** INTERVALS **********
+DH [0B,16r:0) 0@0B-phi
+DIL [0B,48r:0) 0@0B-phi
+DIH [0B,48r:0) 0@0B-phi
+DL [0B,16r:0) 0@0B-phi
+HDI [0B,48r:0) 0@0B-phi
+HDX [0B,16r:0) 0@0B-phi
+SIL [0B,32r:0) 0@0B-phi
+SIH [0B,32r:0) 0@0B-phi
+HSI [0B,32r:0) 0@0B-phi
+%1 [208r,288B:0)[400B,944B:0) 0@208r  weight:4.038527e+00
+%7 [48r,128B:0)[160B,944B:0) 0@48r  weight:2.631042e-02
+%8 [32r,128B:0)[160B,944B:0) 0@32r  weight:3.237453e+00
+%9 [16r,128B:0)[160B,944B:0) 0@16r  weight:3.222302e+00
+%16 [448r,480r:2)[480r,512r:0)[512r,608r:1) 0@480r 1@512r 2@448r  weight:1.279844e+01
+%19 [544r,576r:2)[576r,608r:0)[608r,704r:1) 0@576r 1@608r 2@544r  weight:1.279844e+01
+%22 [640r,672r:2)[672r,704r:0)[704r,800r:1) 0@672r 1@704r 2@640r  weight:1.279844e+01
+%27 [64r,128B:0)[160B,320r:2)[320r,400B:1)[400B,944B:2) 0@64r 1@320r 2@160B-phi  weight:3.517957e+00
+%28 [240r,288B:0)[400B,848r:2)[848r,944B:1) 0@240r 1@848r 2@400B-phi  weight:1.554545e+01
+%29 [256r,288B:0)[400B,512r:2)[736r,768r:4)[768r,800r:3)[800r,944B:1) 0@256r 1@800r 2@400B-phi 3@768r 4@736r  weight:2.325033e+01
+RegMasks:
+********** MACHINEINSTRS **********
+# Machine code for function _Z7mat_vecPPiS_S_: NoPHIs, TracksLiveness, TiedOpsRewritten, TracksDebugUserValues
+Function Live Ins: $rdi in %7, $rsi in %8, $rdx in %9
+
+0B	bb.0.entry:
+	  successors: %bb.2(0x80000000); %bb.2(100.00%)
+	  liveins: $rdi, $rsi, $rdx
+16B	  %9:gr64 = COPY $rdx
+32B	  %8:gr64 = COPY $rsi
+48B	  %7:gr64 = COPY $rdi
+64B	  undef %27.sub_32bit:gr64_nosp = MOV32r0 implicit-def dead $eflags
+112B	  JMP_1 %bb.2
+
+128B	bb.1.for.cond.cleanup:
+	; predecessors: %bb.3
+
+144B	  RET 0
+
+160B	bb.2.for.body:
+	; predecessors: %bb.0, %bb.3
+	  successors: %bb.4(0x80000000); %bb.4(100.00%)
+
+192B	  MOV32mi %9:gr64, 4, %27:gr64_nosp, 0, $noreg, 0 :: (store (s32) into %ir.arrayidx, !tbaa !5)
+208B	  %1:gr64 = MOV64rm %7:gr64, 8, %27:gr64_nosp, 0, $noreg :: (load (s64) from %ir.arrayidx6, !tbaa !9)
+240B	  undef %28.sub_32bit:gr64_nosp = MOV32r0 implicit-def dead $eflags
+256B	  %29:gr32 = MOV32r0 implicit-def dead $eflags
+272B	  JMP_1 %bb.4
+
+288B	bb.3.for.cond.cleanup3:
+	; predecessors: %bb.4
+	  successors: %bb.1(0x04000000), %bb.2(0x7c000000); %bb.1(3.12%), %bb.2(96.88%)
+
+320B	  %27:gr64_nosp = nuw nsw INC64r %27:gr64_nosp(tied-def 0), implicit-def dead $eflags
+336B	  CMP64ri32 %27:gr64_nosp, 2048, implicit-def $eflags
+368B	  JCC_1 %bb.1, 4, implicit killed $eflags
+384B	  JMP_1 %bb.2
+
+400B	bb.4.for.body4:
+	; predecessors: %bb.2, %bb.4
+	  successors: %bb.3(0x04000000), %bb.4(0x7c000000); %bb.3(3.12%), %bb.4(96.88%)
+
+448B	  %16:gr32 = MOV32rm %8:gr64, 4, %28:gr64_nosp, 0, $noreg :: (load (s32) from %ir.sunkaddr47, !tbaa !5)
+480B	  %16:gr32 = nsw IMUL32rm %16:gr32(tied-def 0), %1:gr64, 4, %28:gr64_nosp, 0, $noreg, implicit-def dead $eflags :: (load (s32) from %ir.sunkaddr45, !tbaa !5)
+512B	  %16:gr32 = nsw ADD32rr %16:gr32(tied-def 0), %29:gr32, implicit-def dead $eflags
+528B	  MOV32mr %9:gr64, 4, %27:gr64_nosp, 0, $noreg, %16:gr32 :: (store (s32) into %ir.sunkaddr49, !tbaa !5)
+544B	  %19:gr32 = MOV32rm %8:gr64, 4, %28:gr64_nosp, 4, $noreg :: (load (s32) from %ir.sunkaddr55, !tbaa !5)
+576B	  %19:gr32 = nsw IMUL32rm %19:gr32(tied-def 0), %1:gr64, 4, %28:gr64_nosp, 4, $noreg, implicit-def dead $eflags :: (load (s32) from %ir.sunkaddr52, !tbaa !5)
+608B	  %19:gr32 = nsw ADD32rr %19:gr32(tied-def 0), %16:gr32, implicit-def dead $eflags
+624B	  MOV32mr %9:gr64, 4, %27:gr64_nosp, 0, $noreg, %19:gr32 :: (store (s32) into %ir.sunkaddr49, !tbaa !5)
+640B	  %22:gr32 = MOV32rm %8:gr64, 4, %28:gr64_nosp, 8, $noreg :: (load (s32) from %ir.sunkaddr61, !tbaa !5)
+672B	  %22:gr32 = nsw IMUL32rm %22:gr32(tied-def 0), %1:gr64, 4, %28:gr64_nosp, 8, $noreg, implicit-def dead $eflags :: (load (s32) from %ir.sunkaddr58, !tbaa !5)
+704B	  %22:gr32 = nsw ADD32rr %22:gr32(tied-def 0), %19:gr32, implicit-def dead $eflags
+720B	  MOV32mr %9:gr64, 4, %27:gr64_nosp, 0, $noreg, %22:gr32 :: (store (s32) into %ir.sunkaddr49, !tbaa !5)
+736B	  %29:gr32 = MOV32rm %8:gr64, 4, %28:gr64_nosp, 12, $noreg :: (load (s32) from %ir.sunkaddr67, !tbaa !5)
+768B	  %29:gr32 = nsw IMUL32rm %29:gr32(tied-def 0), %1:gr64, 4, %28:gr64_nosp, 12, $noreg, implicit-def dead $eflags :: (load (s32) from %ir.sunkaddr64, !tbaa !5)
+800B	  %29:gr32 = nsw ADD32rr %29:gr32(tied-def 0), %22:gr32, implicit-def dead $eflags
+816B	  MOV32mr %9:gr64, 4, %27:gr64_nosp, 0, $noreg, %29:gr32 :: (store (s32) into %ir.sunkaddr49, !tbaa !5)
+848B	  %28:gr64_nosp = nuw nsw ADD64ri8 %28:gr64_nosp(tied-def 0), 4, implicit-def dead $eflags
+864B	  CMP64ri32 %28:gr64_nosp, 2048, implicit-def $eflags
+912B	  JCC_1 %bb.3, 4, implicit killed $eflags
+928B	  JMP_1 %bb.4
+
+# End machine code for function _Z7mat_vecPPiS_S_.
+
+Enqueuing %1
+AllocationOrder(GR64) = [ $rax $rcx $rdx $rsi $rdi $r8 $r9 $r10 $r11 $rbx $r14 $r15 $r12 $r13 $rbp ]
+Enqueuing %7
+Enqueuing %8
+Enqueuing %9
+Enqueuing %16
+AllocationOrder(GR32) = [ $eax $ecx $edx $esi $edi $r8d $r9d $r10d $r11d $ebx $ebp $r14d $r15d $r12d $r13d ]
+Enqueuing %19
+Enqueuing %22
+Enqueuing %27
+AllocationOrder(GR64_NOSP) = [ $rax $rcx $rdx $rsi $rdi $r8 $r9 $r10 $r11 $rbx $r14 $r15 $r12 $r13 $rbp ]
+Enqueuing %28
+Enqueuing %29
+
+selectOrSplit GR64:%9 [16r,128B:0)[160B,944B:0) 0@16r  weight:3.222302e+00 w=3.222302e+00
+Inside selectOrSplitImpl
+hints: $rdx
+assigning %9 to $rdx: DH [16r,128B:0)[160B,944B:0) 0@16r DL [16r,128B:0)[160B,944B:0) 0@16r HDX [16r,128B:0)[160B,944B:0) 0@16r
+
+selectOrSplit GR64:%8 [32r,128B:0)[160B,944B:0) 0@32r  weight:3.237453e+00 w=3.237453e+00
+Inside selectOrSplitImpl
+hints: $rsi
+assigning %8 to $rsi: SIL [32r,128B:0)[160B,944B:0) 0@32r SIH [32r,128B:0)[160B,944B:0) 0@32r HSI [32r,128B:0)[160B,944B:0) 0@32r
+
+selectOrSplit GR64:%7 [48r,128B:0)[160B,944B:0) 0@48r  weight:2.631042e-02 w=2.631042e-02
+Inside selectOrSplitImpl
+hints: $rdi
+assigning %7 to $rdi: DIL [48r,128B:0)[160B,944B:0) 0@48r DIH [48r,128B:0)[160B,944B:0) 0@48r HDI [48r,128B:0)[160B,944B:0) 0@48r
+
+selectOrSplit GR64_NOSP:%27 [64r,128B:0)[160B,320r:2)[320r,400B:1)[400B,944B:2) 0@64r 1@320r 2@160B-phi  weight:3.517957e+00 w=3.517957e+00
+Inside selectOrSplitImpl
+assigning %27 to $rax: AH [64r,128B:0)[160B,320r:2)[320r,400B:1)[400B,944B:2) 0@64r 1@320r 2@160B-phi AL [64r,128B:0)[160B,320r:2)[320r,400B:1)[400B,944B:2) 0@64r 1@320r 2@160B-phi HAX [64r,128B:0)[160B,320r:2)[320r,400B:1)[400B,944B:2) 0@64r 1@320r 2@160B-phi
+
+selectOrSplit GR64:%1 [208r,288B:0)[400B,944B:0) 0@208r  weight:4.038527e+00 w=4.038527e+00
+Inside selectOrSplitImpl
+assigning %1 to $rcx: CH [208r,288B:0)[400B,944B:0) 0@208r CL [208r,288B:0)[400B,944B:0) 0@208r HCX [208r,288B:0)[400B,944B:0) 0@208r
+
+selectOrSplit GR64_NOSP:%28 [240r,288B:0)[400B,848r:2)[848r,944B:1) 0@240r 1@848r 2@400B-phi  weight:1.554545e+01 w=1.554545e+01
+Inside selectOrSplitImpl
+assigning %28 to $r8: R8B [240r,288B:0)[400B,848r:2)[848r,944B:1) 0@240r 1@848r 2@400B-phi R8BH [240r,288B:0)[400B,848r:2)[848r,944B:1) 0@240r 1@848r 2@400B-phi R8WH [240r,288B:0)[400B,848r:2)[848r,944B:1) 0@240r 1@848r 2@400B-phi
+
+selectOrSplit GR32:%29 [256r,288B:0)[400B,512r:2)[736r,768r:4)[768r,800r:3)[800r,944B:1) 0@256r 1@800r 2@400B-phi 3@768r 4@736r  weight:2.325033e+01 w=2.325033e+01
+Inside selectOrSplitImpl
+assigning %29 to $r9d: R9B [256r,288B:0)[400B,512r:2)[736r,768r:4)[768r,800r:3)[800r,944B:1) 0@256r 1@800r 2@400B-phi 3@768r 4@736r R9BH [256r,288B:0)[400B,512r:2)[736r,768r:4)[768r,800r:3)[800r,944B:1) 0@256r 1@800r 2@400B-phi 3@768r 4@736r R9WH [256r,288B:0)[400B,512r:2)[736r,768r:4)[768r,800r:3)[800r,944B:1) 0@256r 1@800r 2@400B-phi 3@768r 4@736r
+
+selectOrSplit GR32:%16 [448r,480r:2)[480r,512r:0)[512r,608r:1) 0@480r 1@512r 2@448r  weight:1.279844e+01 w=1.279844e+01
+Inside selectOrSplitImpl
+assigning %16 to $r10d: R10B [448r,480r:2)[480r,512r:0)[512r,608r:1) 0@480r 1@512r 2@448r R10BH [448r,480r:2)[480r,512r:0)[512r,608r:1) 0@480r 1@512r 2@448r R10WH [448r,480r:2)[480r,512r:0)[512r,608r:1) 0@480r 1@512r 2@448r
+
+selectOrSplit GR32:%19 [544r,576r:2)[576r,608r:0)[608r,704r:1) 0@576r 1@608r 2@544r  weight:1.279844e+01 w=1.279844e+01
+Inside selectOrSplitImpl
+assigning %19 to $r9d: R9B [544r,576r:2)[576r,608r:0)[608r,704r:1) 0@576r 1@608r 2@544r R9BH [544r,576r:2)[576r,608r:0)[608r,704r:1) 0@576r 1@608r 2@544r R9WH [544r,576r:2)[576r,608r:0)[608r,704r:1) 0@576r 1@608r 2@544r
+
+selectOrSplit GR32:%22 [640r,672r:2)[672r,704r:0)[704r,800r:1) 0@672r 1@704r 2@640r  weight:1.279844e+01 w=1.279844e+01
+Inside selectOrSplitImpl
+assigning %22 to $r10d: R10B [640r,672r:2)[672r,704r:0)[704r,800r:1) 0@672r 1@704r 2@640r R10BH [640r,672r:2)[672r,704r:0)[704r,800r:1) 0@672r 1@704r 2@640r R10WH [640r,672r:2)[672r,704r:0)[704r,800r:1) 0@672r 1@704r 2@640r
+Inside intial reportStats
+********** REWRITE VIRTUAL REGISTERS **********
+********** Function: _Z7mat_vecPPiS_S_
+********** REGISTER MAP **********
+[%1 -> $rcx] GR64
+[%7 -> $rdi] GR64
+[%8 -> $rsi] GR64
+[%9 -> $rdx] GR64
+[%16 -> $r10d] GR32
+[%19 -> $r9d] GR32
+[%22 -> $r10d] GR32
+[%27 -> $rax] GR64_NOSP
+[%28 -> $r8] GR64_NOSP
+[%29 -> $r9d] GR32
+
+0B	bb.0.entry:
+	  successors: %bb.2(0x80000000); %bb.2(100.00%)
+	  liveins: $rdi, $rdx, $rsi
+16B	  %9:gr64 = COPY $rdx
+32B	  %8:gr64 = COPY $rsi
+48B	  %7:gr64 = COPY $rdi
+64B	  undef %27.sub_32bit:gr64_nosp = MOV32r0 implicit-def dead $eflags
+112B	  JMP_1 %bb.2
+> renamable $rdx = COPY $rdx
+Identity copy: renamable $rdx = COPY $rdx
+  deleted.
+> renamable $rsi = COPY $rsi
+Identity copy: renamable $rsi = COPY $rsi
+  deleted.
+> renamable $rdi = COPY $rdi
+Identity copy: renamable $rdi = COPY $rdi
+  deleted.
+> renamable $eax = MOV32r0 implicit-def dead $eflags, implicit-def $rax
+> JMP_1 %bb.2
+128B	bb.1.for.cond.cleanup:
+	; predecessors: %bb.3
+
+144B	  RET 0
+> RET 0
+160B	bb.2.for.body:
+	; predecessors: %bb.0, %bb.3
+	  successors: %bb.4(0x80000000); %bb.4(100.00%)
+	  liveins: $rax, $rdi, $rdx, $rsi
+192B	  MOV32mi %9:gr64, 4, %27:gr64_nosp, 0, $noreg, 0 :: (store (s32) into %ir.arrayidx, !tbaa !5)
+208B	  %1:gr64 = MOV64rm %7:gr64, 8, %27:gr64_nosp, 0, $noreg :: (load (s64) from %ir.arrayidx6, !tbaa !9)
+240B	  undef %28.sub_32bit:gr64_nosp = MOV32r0 implicit-def dead $eflags
+256B	  %29:gr32 = MOV32r0 implicit-def dead $eflags
+272B	  JMP_1 %bb.4
+> MOV32mi renamable $rdx, 4, renamable $rax, 0, $noreg, 0 :: (store (s32) into %ir.arrayidx, !tbaa !5)
+> renamable $rcx = MOV64rm renamable $rdi, 8, renamable $rax, 0, $noreg :: (load (s64) from %ir.arrayidx6, !tbaa !9)
+> renamable $r8d = MOV32r0 implicit-def dead $eflags, implicit-def $r8
+> renamable $r9d = MOV32r0 implicit-def dead $eflags
+> JMP_1 %bb.4
+288B	bb.3.for.cond.cleanup3:
+	; predecessors: %bb.4
+	  successors: %bb.1(0x04000000), %bb.2(0x7c000000); %bb.1(3.12%), %bb.2(96.88%)
+	  liveins: $rax, $rdi, $rdx, $rsi
+320B	  %27:gr64_nosp = nuw nsw INC64r killed %27:gr64_nosp(tied-def 0), implicit-def dead $eflags
+336B	  CMP64ri32 %27:gr64_nosp, 2048, implicit-def $eflags
+368B	  JCC_1 %bb.1, 4, implicit killed $eflags
+384B	  JMP_1 %bb.2
+> renamable $rax = nuw nsw INC64r killed renamable $rax(tied-def 0), implicit-def dead $eflags
+> CMP64ri32 renamable $rax, 2048, implicit-def $eflags
+> JCC_1 %bb.1, 4, implicit killed $eflags
+> JMP_1 %bb.2
+400B	bb.4.for.body4:
+	; predecessors: %bb.2, %bb.4
+	  successors: %bb.3(0x04000000), %bb.4(0x7c000000); %bb.3(3.12%), %bb.4(96.88%)
+	  liveins: $rax, $rcx, $rdi, $rdx, $rsi, $r8, $r9d
+448B	  %16:gr32 = MOV32rm %8:gr64, 4, %28:gr64_nosp, 0, $noreg :: (load (s32) from %ir.sunkaddr47, !tbaa !5)
+480B	  %16:gr32 = nsw IMUL32rm killed %16:gr32(tied-def 0), %1:gr64, 4, %28:gr64_nosp, 0, $noreg, implicit-def dead $eflags :: (load (s32) from %ir.sunkaddr45, !tbaa !5)
+512B	  %16:gr32 = nsw ADD32rr killed %16:gr32(tied-def 0), killed %29:gr32, implicit-def dead $eflags
+528B	  MOV32mr %9:gr64, 4, %27:gr64_nosp, 0, $noreg, %16:gr32 :: (store (s32) into %ir.sunkaddr49, !tbaa !5)
+544B	  %19:gr32 = MOV32rm %8:gr64, 4, %28:gr64_nosp, 4, $noreg :: (load (s32) from %ir.sunkaddr55, !tbaa !5)
+576B	  %19:gr32 = nsw IMUL32rm killed %19:gr32(tied-def 0), %1:gr64, 4, %28:gr64_nosp, 4, $noreg, implicit-def dead $eflags :: (load (s32) from %ir.sunkaddr52, !tbaa !5)
+608B	  %19:gr32 = nsw ADD32rr killed %19:gr32(tied-def 0), killed %16:gr32, implicit-def dead $eflags
+624B	  MOV32mr %9:gr64, 4, %27:gr64_nosp, 0, $noreg, %19:gr32 :: (store (s32) into %ir.sunkaddr49, !tbaa !5)
+640B	  %22:gr32 = MOV32rm %8:gr64, 4, %28:gr64_nosp, 8, $noreg :: (load (s32) from %ir.sunkaddr61, !tbaa !5)
+672B	  %22:gr32 = nsw IMUL32rm killed %22:gr32(tied-def 0), %1:gr64, 4, %28:gr64_nosp, 8, $noreg, implicit-def dead $eflags :: (load (s32) from %ir.sunkaddr58, !tbaa !5)
+704B	  %22:gr32 = nsw ADD32rr killed %22:gr32(tied-def 0), killed %19:gr32, implicit-def dead $eflags
+720B	  MOV32mr %9:gr64, 4, %27:gr64_nosp, 0, $noreg, %22:gr32 :: (store (s32) into %ir.sunkaddr49, !tbaa !5)
+736B	  %29:gr32 = MOV32rm %8:gr64, 4, %28:gr64_nosp, 12, $noreg :: (load (s32) from %ir.sunkaddr67, !tbaa !5)
+768B	  %29:gr32 = nsw IMUL32rm killed %29:gr32(tied-def 0), %1:gr64, 4, %28:gr64_nosp, 12, $noreg, implicit-def dead $eflags :: (load (s32) from %ir.sunkaddr64, !tbaa !5)
+800B	  %29:gr32 = nsw ADD32rr killed %29:gr32(tied-def 0), killed %22:gr32, implicit-def dead $eflags
+816B	  MOV32mr %9:gr64, 4, %27:gr64_nosp, 0, $noreg, %29:gr32 :: (store (s32) into %ir.sunkaddr49, !tbaa !5)
+848B	  %28:gr64_nosp = nuw nsw ADD64ri8 killed %28:gr64_nosp(tied-def 0), 4, implicit-def dead $eflags
+864B	  CMP64ri32 %28:gr64_nosp, 2048, implicit-def $eflags
+912B	  JCC_1 %bb.3, 4, implicit killed $eflags
+928B	  JMP_1 %bb.4
+> renamable $r10d = MOV32rm renamable $rsi, 4, renamable $r8, 0, $noreg :: (load (s32) from %ir.sunkaddr47, !tbaa !5)
+> renamable $r10d = nsw IMUL32rm killed renamable $r10d(tied-def 0), renamable $rcx, 4, renamable $r8, 0, $noreg, implicit-def dead $eflags :: (load (s32) from %ir.sunkaddr45, !tbaa !5)
+> renamable $r10d = nsw ADD32rr killed renamable $r10d(tied-def 0), killed renamable $r9d, implicit-def dead $eflags
+> MOV32mr renamable $rdx, 4, renamable $rax, 0, $noreg, renamable $r10d :: (store (s32) into %ir.sunkaddr49, !tbaa !5)
+> renamable $r9d = MOV32rm renamable $rsi, 4, renamable $r8, 4, $noreg :: (load (s32) from %ir.sunkaddr55, !tbaa !5)
+> renamable $r9d = nsw IMUL32rm killed renamable $r9d(tied-def 0), renamable $rcx, 4, renamable $r8, 4, $noreg, implicit-def dead $eflags :: (load (s32) from %ir.sunkaddr52, !tbaa !5)
+> renamable $r9d = nsw ADD32rr killed renamable $r9d(tied-def 0), killed renamable $r10d, implicit-def dead $eflags
+> MOV32mr renamable $rdx, 4, renamable $rax, 0, $noreg, renamable $r9d :: (store (s32) into %ir.sunkaddr49, !tbaa !5)
+> renamable $r10d = MOV32rm renamable $rsi, 4, renamable $r8, 8, $noreg :: (load (s32) from %ir.sunkaddr61, !tbaa !5)
+> renamable $r10d = nsw IMUL32rm killed renamable $r10d(tied-def 0), renamable $rcx, 4, renamable $r8, 8, $noreg, implicit-def dead $eflags :: (load (s32) from %ir.sunkaddr58, !tbaa !5)
+> renamable $r10d = nsw ADD32rr killed renamable $r10d(tied-def 0), killed renamable $r9d, implicit-def dead $eflags
+> MOV32mr renamable $rdx, 4, renamable $rax, 0, $noreg, renamable $r10d :: (store (s32) into %ir.sunkaddr49, !tbaa !5)
+> renamable $r9d = MOV32rm renamable $rsi, 4, renamable $r8, 12, $noreg :: (load (s32) from %ir.sunkaddr67, !tbaa !5)
+> renamable $r9d = nsw IMUL32rm killed renamable $r9d(tied-def 0), renamable $rcx, 4, renamable $r8, 12, $noreg, implicit-def dead $eflags :: (load (s32) from %ir.sunkaddr64, !tbaa !5)
+> renamable $r9d = nsw ADD32rr killed renamable $r9d(tied-def 0), killed renamable $r10d, implicit-def dead $eflags
+> MOV32mr renamable $rdx, 4, renamable $rax, 0, $noreg, renamable $r9d :: (store (s32) into %ir.sunkaddr49, !tbaa !5)
+> renamable $r8 = nuw nsw ADD64ri8 killed renamable $r8(tied-def 0), 4, implicit-def dead $eflags
+> CMP64ri32 renamable $r8, 2048, implicit-def $eflags
+> JCC_1 %bb.3, 4, implicit killed $eflags
+> JMP_1 %bb.4
+Computing live-in reg-units in ABI blocks.
+Created 0 new intervals.
+********** INTERVALS **********
+%0 [144r,1616r:0) 0@144r  weight:0.000000e+00
+%1 [384r,496r:0) 0@384r  weight:0.000000e+00
+%2 [496r,512r:0)[512r,544r:1) 0@496r 1@512r  weight:0.000000e+00
+%3 [608r,688r:0)[848B,1072B:0) 0@608r  weight:0.000000e+00
+%4 [688r,704r:0)[704r,736r:1) 0@688r 1@704r  weight:0.000000e+00
+%5 [864r,976r:0) 0@864r  weight:0.000000e+00
+%6 [976r,992r:0)[992r,1024r:1) 0@976r 1@992r  weight:0.000000e+00
+%7 [1088r,1152r:0) 0@1088r  weight:0.000000e+00
+%8 [1152r,1168r:0)[1168r,1184r:1) 0@1152r 1@1168r  weight:0.000000e+00
+%9 [1312r,1488r:0) 0@1312r  weight:0.000000e+00
+%10 [1328r,1424r:0) 0@1328r  weight:0.000000e+00
+%11 [1488r,1504r:0)[1504r,1536r:1) 0@1488r 1@1504r  weight:0.000000e+00
+%12 [128r,176r:0) 0@128r  weight:0.000000e+00
+%13 [32r,48r:0) 0@32r  weight:0.000000e+00
+%14 [96r,144r:0) 0@96r  weight:0.000000e+00
+%15 [112r,128r:0) 0@112r  weight:0.000000e+00
+%16 [160r,208B:0)[368B,592B:0) 0@160r  weight:0.000000e+00
+%17 [464r,480r:0) 0@464r  weight:0.000000e+00
+%19 [320r,336r:0) 0@320r  weight:0.000000e+00
+%20 [240r,256r:0) 0@240r  weight:0.000000e+00
+%21 [304r,368B:0)[592B,784B:0)[848B,1072B:0) 0@304r  weight:0.000000e+00
+%22 [624r,640r:0) 0@624r  weight:0.000000e+00
+%24 [928r,960r:0) 0@928r  weight:0.000000e+00
+%25 [944r,960r:0) 0@944r  weight:0.000000e+00
+%28 [800r,816r:0) 0@800r  weight:0.000000e+00
+%30 [1264r,1280r:0) 0@1264r  weight:0.000000e+00
+%31 [1248r,1264r:0) 0@1248r  weight:0.000000e+00
+%33 [1664r,1680r:0) 0@1664r  weight:0.000000e+00
+%34 [176r,208B:0)[368B,384r:2)[544r,592B:1) 0@176r 1@544r 2@368B-phi  weight:0.000000e+00
+%35 [336r,368B:0)[592B,608r:2)[736r,784B:1) 0@336r 1@736r 2@592B-phi  weight:0.000000e+00
+%36 [640r,672B:0)[848B,864r:2)[1024r,1072B:1) 0@640r 1@1024r 2@848B-phi  weight:0.000000e+00
+%37 [816r,848B:0)[1072B,1088r:2)[1184r,1232B:1) 0@816r 1@1184r 2@1072B-phi  weight:0.000000e+00
+%38 [1280r,1296B:0)[1296B,1312r:2)[1536r,1584B:1) 0@1280r 1@1536r 2@1296B-phi  weight:0.000000e+00
+RegMasks: 64r 272r 432r 896r 1120r 1440r 1632r
+********** MACHINEINSTRS **********
+# Machine code for function main: NoPHIs, TracksLiveness, TiedOpsRewritten
+
+0B	bb.0.entry:
+	  successors: %bb.2(0x80000000); %bb.2(100.00%)
+
+16B	  ADJCALLSTACKDOWN64 0, 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+32B	  %13:gr64 = MOV32ri64 16384
+48B	  $rdi = COPY %13:gr64
+64B	  CALL64pcrel32 target-flags(x86-plt) @_Znam, <regmask $bh $bl $bp $bph $bpl $bx $ebp $ebx $hbp $hbx $rbp $rbx $r12 $r13 $r14 $r15 $r12b $r13b $r14b $r15b $r12bh $r13bh $r14bh $r15bh $r12d $r13d $r14d $r15d $r12w $r13w $r14w $r15w $r12wh and 3 more...>, implicit $rsp, implicit $ssp, implicit killed $rdi, implicit-def $rsp, implicit-def $ssp, implicit-def $rax
+80B	  ADJCALLSTACKUP64 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+96B	  %14:gr64 = COPY killed $rax
+112B	  %15:gr32 = MOV32r0 implicit-def dead $eflags
+128B	  %12:gr64 = SUBREG_TO_REG 0, %15:gr32, %subreg.sub_32bit
+144B	  %0:gr64 = COPY %14:gr64
+160B	  %16:gr64 = MOV32ri64 8192
+176B	  %34:gr64_nosp = COPY %12:gr64
+192B	  JMP_1 %bb.2
+
+208B	bb.1.for.cond.cleanup:
+	; predecessors: %bb.2
+	  successors: %bb.3(0x80000000); %bb.3(100.00%)
+
+224B	  ADJCALLSTACKDOWN64 0, 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+240B	  %20:gr32 = MOV32ri 1337
+256B	  $edi = COPY %20:gr32
+272B	  CALL64pcrel32 target-flags(x86-plt) @srand, <regmask $bh $bl $bp $bph $bpl $bx $ebp $ebx $hbp $hbx $rbp $rbx $r12 $r13 $r14 $r15 $r12b $r13b $r14b $r15b $r12bh $r13bh $r14bh $r15bh $r12d $r13d $r14d $r15d $r12w $r13w $r14w $r15w $r12wh and 3 more...>, implicit $rsp, implicit $ssp, implicit killed $edi, implicit-def $rsp, implicit-def $ssp
+288B	  ADJCALLSTACKUP64 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+304B	  %21:gr32 = MOV32r0 implicit-def dead $eflags
+320B	  %19:gr64 = SUBREG_TO_REG 0, %21:gr32, %subreg.sub_32bit
+336B	  %35:gr64_nosp = COPY %19:gr64
+352B	  JMP_1 %bb.3
+
+368B	bb.2.for.body:
+	; predecessors: %bb.0, %bb.2
+	  successors: %bb.1(0x04000000), %bb.2(0x7c000000); %bb.1(3.12%), %bb.2(96.88%)
+
+384B	  %1:gr64_nosp = COPY %34:gr64_nosp
+400B	  ADJCALLSTACKDOWN64 0, 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+416B	  $rdi = COPY %16:gr64
+432B	  CALL64pcrel32 target-flags(x86-plt) @_Znam, <regmask $bh $bl $bp $bph $bpl $bx $ebp $ebx $hbp $hbx $rbp $rbx $r12 $r13 $r14 $r15 $r12b $r13b $r14b $r15b $r12bh $r13bh $r14bh $r15bh $r12d $r13d $r14d $r15d $r12w $r13w $r14w $r15w $r12wh and 3 more...>, implicit $rsp, implicit $ssp, implicit killed $rdi, implicit-def $rsp, implicit-def $ssp, implicit-def $rax
+448B	  ADJCALLSTACKUP64 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+464B	  %17:gr64 = COPY killed $rax
+480B	  MOV64mr %0:gr64, 8, %1:gr64_nosp, 0, $noreg, %17:gr64 :: (store (s64) into %ir.uglygep111, !tbaa !9)
+496B	  %2:gr64_nosp = COPY %1:gr64_nosp
+512B	  %2:gr64_nosp = nuw nsw INC64r %2:gr64_nosp(tied-def 0), implicit-def dead $eflags
+528B	  CMP64ri32 %2:gr64_nosp, 2048, implicit-def $eflags
+544B	  %34:gr64_nosp = COPY %2:gr64_nosp
+560B	  JCC_1 %bb.1, 4, implicit killed $eflags
+576B	  JMP_1 %bb.2
+
+592B	bb.3.for.cond9.preheader:
+	; predecessors: %bb.1, %bb.4
+	  successors: %bb.6(0x80000000); %bb.6(100.00%)
+
+608B	  %3:gr64_nosp = COPY %35:gr64_nosp
+624B	  %22:gr64 = SUBREG_TO_REG 0, %21:gr32, %subreg.sub_32bit
+640B	  %36:gr64_nosp = COPY %22:gr64
+656B	  JMP_1 %bb.6
+
+672B	bb.4.for.cond.cleanup11:
+	; predecessors: %bb.6
+	  successors: %bb.5(0x04000000), %bb.3(0x7c000000); %bb.5(3.12%), %bb.3(96.88%)
+
+688B	  %4:gr64_nosp = COPY %3:gr64_nosp
+704B	  %4:gr64_nosp = nuw nsw INC64r %4:gr64_nosp(tied-def 0), implicit-def dead $eflags
+720B	  CMP64ri32 %4:gr64_nosp, 2048, implicit-def $eflags
+736B	  %35:gr64_nosp = COPY %4:gr64_nosp
+752B	  JCC_1 %bb.3, 5, implicit killed $eflags
+768B	  JMP_1 %bb.5
+
+784B	bb.5.for.body28.preheader:
+	; predecessors: %bb.4
+	  successors: %bb.7(0x80000000); %bb.7(100.00%)
+
+800B	  %28:gr64 = MOV32ri64 2048
+816B	  %37:gr64 = COPY %28:gr64
+832B	  JMP_1 %bb.7
+
+848B	bb.6.for.body12:
+	; predecessors: %bb.3, %bb.6
+	  successors: %bb.4(0x04000000), %bb.6(0x7c000000); %bb.4(3.12%), %bb.6(96.88%)
+
+864B	  %5:gr64_nosp = COPY %36:gr64_nosp
+880B	  ADJCALLSTACKDOWN64 0, 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+896B	  CALL64pcrel32 target-flags(x86-plt) @rand, <regmask $bh $bl $bp $bph $bpl $bx $ebp $ebx $hbp $hbx $rbp $rbx $r12 $r13 $r14 $r15 $r12b $r13b $r14b $r15b $r12bh $r13bh $r14bh $r15bh $r12d $r13d $r14d $r15d $r12w $r13w $r14w $r15w $r12wh and 3 more...>, implicit $rsp, implicit $ssp, implicit-def $rsp, implicit-def $ssp, implicit-def $eax
+912B	  ADJCALLSTACKUP64 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+928B	  %24:gr32 = COPY killed $eax
+944B	  %25:gr64 = MOV64rm %0:gr64, 8, %3:gr64_nosp, 0, $noreg :: (load (s64) from %ir.sunkaddr112, !tbaa !9)
+960B	  MOV32mr %25:gr64, 4, %5:gr64_nosp, 0, $noreg, %24:gr32 :: (store (s32) into %ir.uglygep110, !tbaa !5)
+976B	  %6:gr64_nosp = COPY %5:gr64_nosp
+992B	  %6:gr64_nosp = nuw nsw INC64r %6:gr64_nosp(tied-def 0), implicit-def dead $eflags
+1008B	  CMP64ri32 %6:gr64_nosp, 2048, implicit-def $eflags
+1024B	  %36:gr64_nosp = COPY %6:gr64_nosp
+1040B	  JCC_1 %bb.4, 4, implicit killed $eflags
+1056B	  JMP_1 %bb.6
+
+1072B	bb.7.for.body28:
+	; predecessors: %bb.5, %bb.7
+	  successors: %bb.8(0x04000000), %bb.7(0x7c000000); %bb.8(3.12%), %bb.7(96.88%)
+
+1088B	  %7:gr64 = COPY %37:gr64
+1104B	  ADJCALLSTACKDOWN64 0, 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+1120B	  CALL64pcrel32 target-flags(x86-plt) @rand, <regmask $bh $bl $bp $bph $bpl $bx $ebp $ebx $hbp $hbx $rbp $rbx $r12 $r13 $r14 $r15 $r12b $r13b $r14b $r15b $r12bh $r13bh $r14bh $r15bh $r12d $r13d $r14d $r15d $r12w $r13w $r14w $r15w $r12wh and 3 more...>, implicit $rsp, implicit $ssp, implicit-def $rsp, implicit-def $ssp, implicit-def dead $eax
+1136B	  ADJCALLSTACKUP64 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+1152B	  %8:gr64 = COPY %7:gr64
+1168B	  %8:gr64 = DEC64r %8:gr64(tied-def 0), implicit-def $eflags
+1184B	  %37:gr64 = COPY %8:gr64
+1200B	  JCC_1 %bb.7, 5, implicit killed $eflags
+1216B	  JMP_1 %bb.8
+
+1232B	bb.8.for.body51.preheader:
+	; predecessors: %bb.7
+	  successors: %bb.9(0x80000000); %bb.9(100.00%)
+
+1248B	  %31:gr32 = MOV32r0 implicit-def dead $eflags
+1264B	  %30:gr64 = SUBREG_TO_REG 0, %31:gr32, %subreg.sub_32bit
+1280B	  %38:gr64_nosp = COPY %30:gr64
+
+1296B	bb.9.for.body51:
+	; predecessors: %bb.8, %bb.11
+	  successors: %bb.11(0x30000000), %bb.10(0x50000000); %bb.11(37.50%), %bb.10(62.50%)
+
+1312B	  %9:gr64_nosp = COPY %38:gr64_nosp
+1328B	  %10:gr64 = MOV64rm %0:gr64, 8, %9:gr64_nosp, 0, $noreg :: (load (s64) from %ir.uglygep, !tbaa !9)
+1344B	  TEST64rr %10:gr64, %10:gr64, implicit-def $eflags
+1360B	  JCC_1 %bb.11, 4, implicit killed $eflags
+1376B	  JMP_1 %bb.10
+
+1392B	bb.10.delete.notnull:
+	; predecessors: %bb.9
+	  successors: %bb.11(0x80000000); %bb.11(100.00%)
+
+1408B	  ADJCALLSTACKDOWN64 0, 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+1424B	  $rdi = COPY %10:gr64
+1440B	  CALL64pcrel32 target-flags(x86-plt) @_ZdaPv, <regmask $bh $bl $bp $bph $bpl $bx $ebp $ebx $hbp $hbx $rbp $rbx $r12 $r13 $r14 $r15 $r12b $r13b $r14b $r15b $r12bh $r13bh $r14bh $r15bh $r12d $r13d $r14d $r15d $r12w $r13w $r14w $r15w $r12wh and 3 more...>, implicit $rsp, implicit $ssp, implicit killed $rdi, implicit-def $rsp, implicit-def $ssp
+1456B	  ADJCALLSTACKUP64 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+
+1472B	bb.11.for.inc54:
+	; predecessors: %bb.9, %bb.10
+	  successors: %bb.12(0x04000000), %bb.9(0x7c000000); %bb.12(3.12%), %bb.9(96.88%)
+
+1488B	  %11:gr64_nosp = COPY %9:gr64_nosp
+1504B	  %11:gr64_nosp = nuw nsw INC64r %11:gr64_nosp(tied-def 0), implicit-def dead $eflags
+1520B	  CMP64ri32 %11:gr64_nosp, 2048, implicit-def $eflags
+1536B	  %38:gr64_nosp = COPY %11:gr64_nosp
+1552B	  JCC_1 %bb.9, 5, implicit killed $eflags
+1568B	  JMP_1 %bb.12
+
+1584B	bb.12.delete.notnull58:
+	; predecessors: %bb.11
+
+1600B	  ADJCALLSTACKDOWN64 0, 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+1616B	  $rdi = COPY %0:gr64
+1632B	  CALL64pcrel32 target-flags(x86-plt) @_ZdaPv, <regmask $bh $bl $bp $bph $bpl $bx $ebp $ebx $hbp $hbx $rbp $rbx $r12 $r13 $r14 $r15 $r12b $r13b $r14b $r15b $r12bh $r13bh $r14bh $r15bh $r12d $r13d $r14d $r15d $r12w $r13w $r14w $r15w $r12wh and 3 more...>, implicit $rsp, implicit $ssp, implicit killed $rdi, implicit-def $rsp, implicit-def $ssp
+1648B	  ADJCALLSTACKUP64 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+1664B	  %33:gr32 = MOV32r0 implicit-def dead $eflags
+1680B	  $eax = COPY %33:gr32
+1696B	  RET 0, killed $eax
+
+# End machine code for function main.
+
+********** SIMPLE REGISTER COALESCING **********
+********** Function: main
+********** JOINING INTERVALS ***********
+for.body12:
+928B	%24:gr32 = COPY killed $eax
+	Considering merging %24 with $eax
+	Can only merge into reserved registers.
+864B	%5:gr64_nosp = COPY %36:gr64_nosp
+	Considering merging to GR64_NOSP with %5 in %36
+		RHS = %5 [864r,976r:0) 0@864r  weight:0.000000e+00
+		LHS = %36 [640r,672B:0)[848B,864r:2)[1024r,1072B:1) 0@640r 1@1024r 2@848B-phi  weight:0.000000e+00
+		merge %5:0@864r into %36:2@848B --> @848B
+		erased:	864r	%5:gr64_nosp = COPY %36:gr64_nosp
+		updated: 960B	MOV32mr %25:gr64, 4, %36:gr64_nosp, 0, $noreg, %24:gr32 :: (store (s32) into %ir.uglygep110, !tbaa !5)
+		updated: 976B	%6:gr64_nosp = COPY %36:gr64_nosp
+	Success: %5 -> %36
+	Result = %36 [640r,672B:0)[848B,976r:2)[1024r,1072B:1) 0@640r 1@1024r 2@848B-phi  weight:0.000000e+00
+976B	%6:gr64_nosp = COPY %36:gr64_nosp
+	Considering merging to GR64_NOSP with %6 in %36
+		RHS = %6 [976r,992r:0)[992r,1024r:1) 0@976r 1@992r  weight:0.000000e+00
+		LHS = %36 [640r,672B:0)[848B,976r:2)[1024r,1072B:1) 0@640r 1@1024r 2@848B-phi  weight:0.000000e+00
+		merge %36:1@1024r into %6:1@992r --> @992r
+		merge %6:0@976r into %36:2@848B --> @848B
+		erased:	1024r	%36:gr64_nosp = COPY %6:gr64_nosp
+		erased:	976r	%6:gr64_nosp = COPY %36:gr64_nosp
+		updated: 992B	%36:gr64_nosp = nuw nsw INC64r %36:gr64_nosp(tied-def 0), implicit-def dead $eflags
+		updated: 1008B	CMP64ri32 %36:gr64_nosp, 2048, implicit-def $eflags
+	Success: %6 -> %36
+	Result = %36 [640r,672B:0)[848B,992r:2)[992r,1072B:1) 0@640r 1@992r 2@848B-phi  weight:0.000000e+00
+for.body:
+416B	$rdi = COPY %16:gr64
+	Considering merging %16 with $rdi
+	Can only merge into reserved registers.
+Remat: $rdi = MOV32ri64 8192
+Shrink: %16 [160r,208B:0)[368B,592B:0) 0@160r  weight:0.000000e+00
+All defs dead: 160r	dead %16:gr64 = MOV32ri64 8192
+Shrunk: %16 [160r,160d:0) 0@160r  weight:0.000000e+00
+Deleting dead def 160r	dead %16:gr64 = MOV32ri64 8192
+464B	%17:gr64 = COPY killed $rax
+	Considering merging %17 with $rax
+	Can only merge into reserved registers.
+for.body28:
+for.body51:
+1312B	%9:gr64_nosp = COPY %38:gr64_nosp
+	Considering merging to GR64_NOSP with %9 in %38
+		RHS = %9 [1312r,1488r:0) 0@1312r  weight:0.000000e+00
+		LHS = %38 [1280r,1296B:0)[1296B,1312r:2)[1536r,1584B:1) 0@1280r 1@1536r 2@1296B-phi  weight:0.000000e+00
+		merge %9:0@1312r into %38:2@1296B --> @1296B
+		erased:	1312r	%9:gr64_nosp = COPY %38:gr64_nosp
+		updated: 1328B	%10:gr64 = MOV64rm %0:gr64, 8, %38:gr64_nosp, 0, $noreg :: (load (s64) from %ir.uglygep, !tbaa !9)
+		updated: 1488B	%11:gr64_nosp = COPY %38:gr64_nosp
+	Success: %9 -> %38
+	Result = %38 [1280r,1296B:0)[1296B,1488r:2)[1536r,1584B:1) 0@1280r 1@1536r 2@1296B-phi  weight:0.000000e+00
+for.inc54:
+for.cond9.preheader:
+608B	%3:gr64_nosp = COPY %35:gr64_nosp
+	Considering merging to GR64_NOSP with %3 in %35
+		RHS = %3 [608r,688r:0)[848B,1072B:0) 0@608r  weight:0.000000e+00
+		LHS = %35 [336r,368B:0)[592B,608r:2)[736r,784B:1) 0@336r 1@736r 2@592B-phi  weight:0.000000e+00
+		merge %3:0@608r into %35:2@592B --> @592B
+		erased:	608r	%3:gr64_nosp = COPY %35:gr64_nosp
+		updated: 944B	%25:gr64 = MOV64rm %0:gr64, 8, %35:gr64_nosp, 0, $noreg :: (load (s64) from %ir.sunkaddr112, !tbaa !9)
+		updated: 688B	%4:gr64_nosp = COPY %35:gr64_nosp
+	Success: %3 -> %35
+	Result = %35 [336r,368B:0)[592B,688r:2)[736r,784B:1)[848B,1072B:2) 0@336r 1@736r 2@592B-phi  weight:0.000000e+00
+624B	%22:gr64 = SUBREG_TO_REG 0, %21:gr32, %subreg.sub_32bit
+	Considering merging to GR64_with_sub_8bit with %21 in %22:sub_32bit
+		RHS = %21 [304r,368B:0)[592B,784B:0)[848B,1072B:0) 0@304r  weight:0.000000e+00
+		LHS = %22 [624r,640r:0) 0@624r  weight:0.000000e+00
+		merge %22:0@624r into %21:0@304r --> @304r
+		erased:	624r	%22:gr64 = SUBREG_TO_REG 0, %21:gr32, %subreg.sub_32bit
+		updated: 304B	undef %22.sub_32bit:gr64_with_sub_8bit = MOV32r0 implicit-def dead $eflags
+		updated: 320B	%19:gr64 = SUBREG_TO_REG 0, %22.sub_32bit:gr64_with_sub_8bit, %subreg.sub_32bit
+	Success: %21:sub_32bit -> %22
+	Result = %22 [304r,368B:0)[592B,784B:0)[848B,1072B:0) 0@304r  weight:0.000000e+00
+for.cond.cleanup11:
+delete.notnull:
+1424B	$rdi = COPY %10:gr64
+	Considering merging %10 with $rdi
+	Can only merge into reserved registers.
+384B	%1:gr64_nosp = COPY %34:gr64_nosp
+	Considering merging to GR64_NOSP with %1 in %34
+		RHS = %1 [384r,496r:0) 0@384r  weight:0.000000e+00
+		LHS = %34 [176r,208B:0)[368B,384r:2)[544r,592B:1) 0@176r 1@544r 2@368B-phi  weight:0.000000e+00
+		merge %1:0@384r into %34:2@368B --> @368B
+		erased:	384r	%1:gr64_nosp = COPY %34:gr64_nosp
+		updated: 480B	MOV64mr %0:gr64, 8, %34:gr64_nosp, 0, $noreg, %17:gr64 :: (store (s64) into %ir.uglygep111, !tbaa !9)
+		updated: 496B	%2:gr64_nosp = COPY %34:gr64_nosp
+	Success: %1 -> %34
+	Result = %34 [176r,208B:0)[368B,496r:2)[544r,592B:1) 0@176r 1@544r 2@368B-phi  weight:0.000000e+00
+496B	%2:gr64_nosp = COPY %34:gr64_nosp
+	Considering merging to GR64_NOSP with %2 in %34
+		RHS = %2 [496r,512r:0)[512r,544r:1) 0@496r 1@512r  weight:0.000000e+00
+		LHS = %34 [176r,208B:0)[368B,496r:2)[544r,592B:1) 0@176r 1@544r 2@368B-phi  weight:0.000000e+00
+		merge %34:1@544r into %2:1@512r --> @512r
+		merge %2:0@496r into %34:2@368B --> @368B
+		erased:	544r	%34:gr64_nosp = COPY %2:gr64_nosp
+		erased:	496r	%2:gr64_nosp = COPY %34:gr64_nosp
+		updated: 512B	%34:gr64_nosp = nuw nsw INC64r %34:gr64_nosp(tied-def 0), implicit-def dead $eflags
+		updated: 528B	CMP64ri32 %34:gr64_nosp, 2048, implicit-def $eflags
+	Success: %2 -> %34
+	Result = %34 [176r,208B:0)[368B,512r:2)[512r,592B:1) 0@176r 1@512r 2@368B-phi  weight:0.000000e+00
+1088B	%7:gr64 = COPY %37:gr64
+	Considering merging to GR64 with %7 in %37
+		RHS = %7 [1088r,1152r:0) 0@1088r  weight:0.000000e+00
+		LHS = %37 [816r,848B:0)[1072B,1088r:2)[1184r,1232B:1) 0@816r 1@1184r 2@1072B-phi  weight:0.000000e+00
+		merge %7:0@1088r into %37:2@1072B --> @1072B
+		erased:	1088r	%7:gr64 = COPY %37:gr64
+		updated: 1152B	%8:gr64 = COPY %37:gr64
+	Success: %7 -> %37
+	Result = %37 [816r,848B:0)[1072B,1152r:2)[1184r,1232B:1) 0@816r 1@1184r 2@1072B-phi  weight:0.000000e+00
+1152B	%8:gr64 = COPY %37:gr64
+	Considering merging to GR64 with %8 in %37
+		RHS = %8 [1152r,1168r:0)[1168r,1184r:1) 0@1152r 1@1168r  weight:0.000000e+00
+		LHS = %37 [816r,848B:0)[1072B,1152r:2)[1184r,1232B:1) 0@816r 1@1184r 2@1072B-phi  weight:0.000000e+00
+		merge %37:1@1184r into %8:1@1168r --> @1168r
+		merge %8:0@1152r into %37:2@1072B --> @1072B
+		erased:	1184r	%37:gr64 = COPY %8:gr64
+		erased:	1152r	%8:gr64 = COPY %37:gr64
+		updated: 1168B	%37:gr64 = DEC64r %37:gr64(tied-def 0), implicit-def $eflags
+	Success: %8 -> %37
+	Result = %37 [816r,848B:0)[1072B,1168r:2)[1168r,1232B:1) 0@816r 1@1168r 2@1072B-phi  weight:0.000000e+00
+1488B	%11:gr64_nosp = COPY %38:gr64_nosp
+	Considering merging to GR64_NOSP with %11 in %38
+		RHS = %11 [1488r,1504r:0)[1504r,1536r:1) 0@1488r 1@1504r  weight:0.000000e+00
+		LHS = %38 [1280r,1296B:0)[1296B,1488r:2)[1536r,1584B:1) 0@1280r 1@1536r 2@1296B-phi  weight:0.000000e+00
+		merge %38:1@1536r into %11:1@1504r --> @1504r
+		merge %11:0@1488r into %38:2@1296B --> @1296B
+		erased:	1536r	%38:gr64_nosp = COPY %11:gr64_nosp
+		erased:	1488r	%11:gr64_nosp = COPY %38:gr64_nosp
+		updated: 1504B	%38:gr64_nosp = nuw nsw INC64r %38:gr64_nosp(tied-def 0), implicit-def dead $eflags
+		updated: 1520B	CMP64ri32 %38:gr64_nosp, 2048, implicit-def $eflags
+	Success: %11 -> %38
+	Result = %38 [1280r,1296B:0)[1296B,1504r:2)[1504r,1584B:1) 0@1280r 1@1504r 2@1296B-phi  weight:0.000000e+00
+640B	%36:gr64_nosp = COPY %22:gr64_with_sub_8bit
+	Considering merging to GR64_NOSP with %22 in %36
+		RHS = %22 [304r,368B:0)[592B,784B:0)[848B,1072B:0) 0@304r  weight:0.000000e+00
+		LHS = %36 [640r,672B:0)[848B,992r:2)[992r,1072B:1) 0@640r 1@992r 2@848B-phi  weight:0.000000e+00
+		merge %36:0@640r into %22:0@304r --> @304r
+		interference at %36:1@992r
+		updated: 640B	undef %36.sub_32bit:gr64_nosp = MOV32r0 implicit-def dead $eflags
+		updated: 992B	%36:gr64_nosp = nuw nsw INC64r %36:gr64_nosp(tied-def 0), implicit-def dead $eflags
+		updated: 960B	MOV32mr %25:gr64, 4, %36:gr64_nosp, 0, $noreg, %24:gr32 :: (store (s32) into %ir.uglygep110, !tbaa !5)
+		updated: 1008B	CMP64ri32 %36:gr64_nosp, 2048, implicit-def $eflags
+Remat: undef %36.sub_32bit:gr64_nosp = MOV32r0 implicit-def dead $eflags
+Shrink: %22 [304r,368B:0)[592B,784B:0)[848B,1072B:0) 0@304r  weight:0.000000e+00
+Shrunk: %22 [304r,320r:0) 0@304r  weight:0.000000e+00
+688B	%4:gr64_nosp = COPY %35:gr64_nosp
+	Considering merging to GR64_NOSP with %4 in %35
+		RHS = %4 [688r,704r:0)[704r,736r:1) 0@688r 1@704r  weight:0.000000e+00
+		LHS = %35 [336r,368B:0)[592B,688r:2)[736r,784B:1)[848B,1072B:2) 0@336r 1@736r 2@592B-phi  weight:0.000000e+00
+		merge %35:1@736r into %4:1@704r --> @704r
+		merge %4:0@688r into %35:2@592B --> @592B
+		erased:	736r	%35:gr64_nosp = COPY %4:gr64_nosp
+		erased:	688r	%4:gr64_nosp = COPY %35:gr64_nosp
+		updated: 704B	%35:gr64_nosp = nuw nsw INC64r %35:gr64_nosp(tied-def 0), implicit-def dead $eflags
+		updated: 720B	CMP64ri32 %35:gr64_nosp, 2048, implicit-def $eflags
+	Success: %4 -> %35
+	Result = %35 [336r,368B:0)[592B,704r:2)[704r,784B:1)[848B,1072B:2) 0@336r 1@704r 2@592B-phi  weight:0.000000e+00
+for.cond.cleanup:
+256B	$edi = COPY %20:gr32
+	Considering merging %20 with $edi
+	Can only merge into reserved registers.
+Remat: $edi = MOV32ri 1337
+Shrink: %20 [240r,256r:0) 0@240r  weight:0.000000e+00
+All defs dead: 240r	dead %20:gr32 = MOV32ri 1337
+Shrunk: %20 [240r,240d:0) 0@240r  weight:0.000000e+00
+Deleting dead def 240r	dead %20:gr32 = MOV32ri 1337
+320B	%19:gr64 = SUBREG_TO_REG 0, %22.sub_32bit:gr64_with_sub_8bit, %subreg.sub_32bit
+	Considering merging to GR64_with_sub_8bit with %22 in %19
+		RHS = %22 [304r,320r:0) 0@304r  weight:0.000000e+00
+		LHS = %19 [320r,336r:0) 0@320r  weight:0.000000e+00
+		merge %19:0@320r into %22:0@304r --> @304r
+		erased:	320r	%19:gr64 = SUBREG_TO_REG 0, %22.sub_32bit:gr64_with_sub_8bit, %subreg.sub_32bit
+		updated: 304B	undef %19.sub_32bit:gr64_with_sub_8bit = MOV32r0 implicit-def dead $eflags
+	Success: %22 -> %19
+	Result = %19 [304r,336r:0) 0@304r  weight:0.000000e+00
+for.body28.preheader:
+for.body51.preheader:
+1264B	%30:gr64 = SUBREG_TO_REG 0, %31:gr32, %subreg.sub_32bit
+	Considering merging to GR64_with_sub_8bit with %31 in %30:sub_32bit
+		RHS = %31 [1248r,1264r:0) 0@1248r  weight:0.000000e+00
+		LHS = %30 [1264r,1280r:0) 0@1264r  weight:0.000000e+00
+		merge %30:0@1264r into %31:0@1248r --> @1248r
+		erased:	1264r	%30:gr64 = SUBREG_TO_REG 0, %31:gr32, %subreg.sub_32bit
+		updated: 1248B	undef %30.sub_32bit:gr64_with_sub_8bit = MOV32r0 implicit-def dead $eflags
+	Success: %31:sub_32bit -> %30
+	Result = %30 [1248r,1280r:0) 0@1248r  weight:0.000000e+00
+entry:
+48B	$rdi = COPY %13:gr64
+	Considering merging %13 with $rdi
+	Can only merge into reserved registers.
+Remat: $rdi = MOV32ri64 16384
+Shrink: %13 [32r,48r:0) 0@32r  weight:0.000000e+00
+All defs dead: 32r	dead %13:gr64 = MOV32ri64 16384
+Shrunk: %13 [32r,32d:0) 0@32r  weight:0.000000e+00
+Deleting dead def 32r	dead %13:gr64 = MOV32ri64 16384
+96B	%14:gr64 = COPY killed $rax
+	Considering merging %14 with $rax
+	Can only merge into reserved registers.
+128B	%12:gr64 = SUBREG_TO_REG 0, %15:gr32, %subreg.sub_32bit
+	Considering merging to GR64_with_sub_8bit with %15 in %12:sub_32bit
+		RHS = %15 [112r,128r:0) 0@112r  weight:0.000000e+00
+		LHS = %12 [128r,176r:0) 0@128r  weight:0.000000e+00
+		merge %12:0@128r into %15:0@112r --> @112r
+		erased:	128r	%12:gr64 = SUBREG_TO_REG 0, %15:gr32, %subreg.sub_32bit
+		updated: 112B	undef %12.sub_32bit:gr64_with_sub_8bit = MOV32r0 implicit-def dead $eflags
+	Success: %15:sub_32bit -> %12
+	Result = %12 [112r,176r:0) 0@112r  weight:0.000000e+00
+delete.notnull58:
+1616B	$rdi = COPY %0:gr64
+	Considering merging %0 with $rdi
+	Can only merge into reserved registers.
+1680B	$eax = COPY %33:gr32
+	Considering merging %33 with $eax
+	Can only merge into reserved registers.
+Remat: $eax = MOV32r0 implicit-def dead $eflags
+Shrink: %33 [1664r,1680r:0) 0@1664r  weight:0.000000e+00
+All defs dead: 1664r	dead %33:gr32 = MOV32r0 implicit-def dead $eflags
+Shrunk: %33 [1664r,1664d:0) 0@1664r  weight:0.000000e+00
+Deleting dead def 1664r	dead %33:gr32 = MOV32r0 implicit-def dead $eflags
+336B	%35:gr64_nosp = COPY %19:gr64_with_sub_8bit
+	Considering merging to GR64_NOSP with %19 in %35
+		RHS = %19 [304r,336r:0) 0@304r  weight:0.000000e+00
+		LHS = %35 [336r,368B:0)[592B,704r:2)[704r,784B:1)[848B,1072B:2) 0@336r 1@704r 2@592B-phi  weight:0.000000e+00
+		merge %35:0@336r into %19:0@304r --> @304r
+		erased:	336r	%35:gr64_nosp = COPY %19:gr64_with_sub_8bit
+		updated: 304B	undef %35.sub_32bit:gr64_nosp = MOV32r0 implicit-def dead $eflags
+	Success: %19 -> %35
+	Result = %35 [304r,368B:0)[592B,704r:2)[704r,784B:1)[848B,1072B:2) 0@304r 1@704r 2@592B-phi  weight:0.000000e+00
+816B	%37:gr64 = COPY %28:gr64
+	Considering merging to GR64 with %28 in %37
+		RHS = %28 [800r,816r:0) 0@800r  weight:0.000000e+00
+		LHS = %37 [816r,848B:0)[1072B,1168r:2)[1168r,1232B:1) 0@816r 1@1168r 2@1072B-phi  weight:0.000000e+00
+		merge %37:0@816r into %28:0@800r --> @800r
+		erased:	816r	%37:gr64 = COPY %28:gr64
+		updated: 800B	%37:gr64 = MOV32ri64 2048
+	Success: %28 -> %37
+	Result = %37 [800r,848B:0)[1072B,1168r:2)[1168r,1232B:1) 0@800r 1@1168r 2@1072B-phi  weight:0.000000e+00
+1280B	%38:gr64_nosp = COPY %30:gr64_with_sub_8bit
+	Considering merging to GR64_NOSP with %30 in %38
+		RHS = %30 [1248r,1280r:0) 0@1248r  weight:0.000000e+00
+		LHS = %38 [1280r,1296B:0)[1296B,1504r:2)[1504r,1584B:1) 0@1280r 1@1504r 2@1296B-phi  weight:0.000000e+00
+		merge %38:0@1280r into %30:0@1248r --> @1248r
+		erased:	1280r	%38:gr64_nosp = COPY %30:gr64_with_sub_8bit
+		updated: 1248B	undef %38.sub_32bit:gr64_nosp = MOV32r0 implicit-def dead $eflags
+	Success: %30 -> %38
+	Result = %38 [1248r,1296B:0)[1296B,1504r:2)[1504r,1584B:1) 0@1248r 1@1504r 2@1296B-phi  weight:0.000000e+00
+144B	%0:gr64 = COPY %14:gr64
+	Considering merging to GR64 with %14 in %0
+		RHS = %14 [96r,144r:0) 0@96r  weight:0.000000e+00
+		LHS = %0 [144r,1616r:0) 0@144r  weight:0.000000e+00
+		merge %0:0@144r into %14:0@96r --> @96r
+		erased:	144r	%0:gr64 = COPY %14:gr64
+		updated: 96B	%0:gr64 = COPY killed $rax
+	Success: %14 -> %0
+	Result = %0 [96r,1616r:0) 0@96r  weight:0.000000e+00
+176B	%34:gr64_nosp = COPY %12:gr64_with_sub_8bit
+	Considering merging to GR64_NOSP with %12 in %34
+		RHS = %12 [112r,176r:0) 0@112r  weight:0.000000e+00
+		LHS = %34 [176r,208B:0)[368B,512r:2)[512r,592B:1) 0@176r 1@512r 2@368B-phi  weight:0.000000e+00
+		merge %34:0@176r into %12:0@112r --> @112r
+		erased:	176r	%34:gr64_nosp = COPY %12:gr64_with_sub_8bit
+		updated: 112B	undef %34.sub_32bit:gr64_nosp = MOV32r0 implicit-def dead $eflags
+	Success: %12 -> %34
+	Result = %34 [112r,208B:0)[368B,512r:2)[512r,592B:1) 0@112r 1@512r 2@368B-phi  weight:0.000000e+00
+1616B	$rdi = COPY %0:gr64
+	Considering merging %0 with $rdi
+	Can only merge into reserved registers.
+Trying to inflate 0 regs.
+********** INTERVALS **********
+%0 [96r,1616r:0) 0@96r  weight:0.000000e+00
+%10 [1328r,1424r:0) 0@1328r  weight:0.000000e+00
+%17 [464r,480r:0) 0@464r  weight:0.000000e+00
+%24 [928r,960r:0) 0@928r  weight:0.000000e+00
+%25 [944r,960r:0) 0@944r  weight:0.000000e+00
+%34 [112r,208B:0)[368B,512r:2)[512r,592B:1) 0@112r 1@512r 2@368B-phi  weight:0.000000e+00
+%35 [304r,368B:0)[592B,704r:2)[704r,784B:1)[848B,1072B:2) 0@304r 1@704r 2@592B-phi  weight:0.000000e+00
+%36 [640r,672B:0)[848B,992r:2)[992r,1072B:1) 0@640r 1@992r 2@848B-phi  weight:0.000000e+00
+%37 [800r,848B:0)[1072B,1168r:2)[1168r,1232B:1) 0@800r 1@1168r 2@1072B-phi  weight:0.000000e+00
+%38 [1248r,1296B:0)[1296B,1504r:2)[1504r,1584B:1) 0@1248r 1@1504r 2@1296B-phi  weight:0.000000e+00
+RegMasks: 64r 272r 432r 896r 1120r 1440r 1632r
+********** MACHINEINSTRS **********
+# Machine code for function main: NoPHIs, TracksLiveness, TiedOpsRewritten
+
+0B	bb.0.entry:
+	  successors: %bb.2(0x80000000); %bb.2(100.00%)
+
+16B	  ADJCALLSTACKDOWN64 0, 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+48B	  $rdi = MOV32ri64 16384
+64B	  CALL64pcrel32 target-flags(x86-plt) @_Znam, <regmask $bh $bl $bp $bph $bpl $bx $ebp $ebx $hbp $hbx $rbp $rbx $r12 $r13 $r14 $r15 $r12b $r13b $r14b $r15b $r12bh $r13bh $r14bh $r15bh $r12d $r13d $r14d $r15d $r12w $r13w $r14w $r15w $r12wh and 3 more...>, implicit $rsp, implicit $ssp, implicit killed $rdi, implicit-def $rsp, implicit-def $ssp, implicit-def $rax
+80B	  ADJCALLSTACKUP64 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+96B	  %0:gr64 = COPY killed $rax
+112B	  undef %34.sub_32bit:gr64_nosp = MOV32r0 implicit-def dead $eflags
+192B	  JMP_1 %bb.2
+
+208B	bb.1.for.cond.cleanup:
+	; predecessors: %bb.2
+	  successors: %bb.3(0x80000000); %bb.3(100.00%)
+
+224B	  ADJCALLSTACKDOWN64 0, 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+256B	  $edi = MOV32ri 1337
+272B	  CALL64pcrel32 target-flags(x86-plt) @srand, <regmask $bh $bl $bp $bph $bpl $bx $ebp $ebx $hbp $hbx $rbp $rbx $r12 $r13 $r14 $r15 $r12b $r13b $r14b $r15b $r12bh $r13bh $r14bh $r15bh $r12d $r13d $r14d $r15d $r12w $r13w $r14w $r15w $r12wh and 3 more...>, implicit $rsp, implicit $ssp, implicit killed $edi, implicit-def $rsp, implicit-def $ssp
+288B	  ADJCALLSTACKUP64 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+304B	  undef %35.sub_32bit:gr64_nosp = MOV32r0 implicit-def dead $eflags
+352B	  JMP_1 %bb.3
+
+368B	bb.2.for.body:
+	; predecessors: %bb.0, %bb.2
+	  successors: %bb.1(0x04000000), %bb.2(0x7c000000); %bb.1(3.12%), %bb.2(96.88%)
+
+400B	  ADJCALLSTACKDOWN64 0, 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+416B	  $rdi = MOV32ri64 8192
+432B	  CALL64pcrel32 target-flags(x86-plt) @_Znam, <regmask $bh $bl $bp $bph $bpl $bx $ebp $ebx $hbp $hbx $rbp $rbx $r12 $r13 $r14 $r15 $r12b $r13b $r14b $r15b $r12bh $r13bh $r14bh $r15bh $r12d $r13d $r14d $r15d $r12w $r13w $r14w $r15w $r12wh and 3 more...>, implicit $rsp, implicit $ssp, implicit killed $rdi, implicit-def $rsp, implicit-def $ssp, implicit-def $rax
+448B	  ADJCALLSTACKUP64 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+464B	  %17:gr64 = COPY killed $rax
+480B	  MOV64mr %0:gr64, 8, %34:gr64_nosp, 0, $noreg, %17:gr64 :: (store (s64) into %ir.uglygep111, !tbaa !9)
+512B	  %34:gr64_nosp = nuw nsw INC64r %34:gr64_nosp(tied-def 0), implicit-def dead $eflags
+528B	  CMP64ri32 %34:gr64_nosp, 2048, implicit-def $eflags
+560B	  JCC_1 %bb.1, 4, implicit killed $eflags
+576B	  JMP_1 %bb.2
+
+592B	bb.3.for.cond9.preheader:
+	; predecessors: %bb.1, %bb.4
+	  successors: %bb.6(0x80000000); %bb.6(100.00%)
+
+640B	  undef %36.sub_32bit:gr64_nosp = MOV32r0 implicit-def dead $eflags
+656B	  JMP_1 %bb.6
+
+672B	bb.4.for.cond.cleanup11:
+	; predecessors: %bb.6
+	  successors: %bb.5(0x04000000), %bb.3(0x7c000000); %bb.5(3.12%), %bb.3(96.88%)
+
+704B	  %35:gr64_nosp = nuw nsw INC64r %35:gr64_nosp(tied-def 0), implicit-def dead $eflags
+720B	  CMP64ri32 %35:gr64_nosp, 2048, implicit-def $eflags
+752B	  JCC_1 %bb.3, 5, implicit killed $eflags
+768B	  JMP_1 %bb.5
+
+784B	bb.5.for.body28.preheader:
+	; predecessors: %bb.4
+	  successors: %bb.7(0x80000000); %bb.7(100.00%)
+
+800B	  %37:gr64 = MOV32ri64 2048
+832B	  JMP_1 %bb.7
+
+848B	bb.6.for.body12:
+	; predecessors: %bb.3, %bb.6
+	  successors: %bb.4(0x04000000), %bb.6(0x7c000000); %bb.4(3.12%), %bb.6(96.88%)
+
+880B	  ADJCALLSTACKDOWN64 0, 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+896B	  CALL64pcrel32 target-flags(x86-plt) @rand, <regmask $bh $bl $bp $bph $bpl $bx $ebp $ebx $hbp $hbx $rbp $rbx $r12 $r13 $r14 $r15 $r12b $r13b $r14b $r15b $r12bh $r13bh $r14bh $r15bh $r12d $r13d $r14d $r15d $r12w $r13w $r14w $r15w $r12wh and 3 more...>, implicit $rsp, implicit $ssp, implicit-def $rsp, implicit-def $ssp, implicit-def $eax
+912B	  ADJCALLSTACKUP64 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+928B	  %24:gr32 = COPY killed $eax
+944B	  %25:gr64 = MOV64rm %0:gr64, 8, %35:gr64_nosp, 0, $noreg :: (load (s64) from %ir.sunkaddr112, !tbaa !9)
+960B	  MOV32mr %25:gr64, 4, %36:gr64_nosp, 0, $noreg, %24:gr32 :: (store (s32) into %ir.uglygep110, !tbaa !5)
+992B	  %36:gr64_nosp = nuw nsw INC64r %36:gr64_nosp(tied-def 0), implicit-def dead $eflags
+1008B	  CMP64ri32 %36:gr64_nosp, 2048, implicit-def $eflags
+1040B	  JCC_1 %bb.4, 4, implicit killed $eflags
+1056B	  JMP_1 %bb.6
+
+1072B	bb.7.for.body28:
+	; predecessors: %bb.5, %bb.7
+	  successors: %bb.8(0x04000000), %bb.7(0x7c000000); %bb.8(3.12%), %bb.7(96.88%)
+
+1104B	  ADJCALLSTACKDOWN64 0, 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+1120B	  CALL64pcrel32 target-flags(x86-plt) @rand, <regmask $bh $bl $bp $bph $bpl $bx $ebp $ebx $hbp $hbx $rbp $rbx $r12 $r13 $r14 $r15 $r12b $r13b $r14b $r15b $r12bh $r13bh $r14bh $r15bh $r12d $r13d $r14d $r15d $r12w $r13w $r14w $r15w $r12wh and 3 more...>, implicit $rsp, implicit $ssp, implicit-def $rsp, implicit-def $ssp, implicit-def dead $eax
+1136B	  ADJCALLSTACKUP64 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+1168B	  %37:gr64 = DEC64r %37:gr64(tied-def 0), implicit-def $eflags
+1200B	  JCC_1 %bb.7, 5, implicit killed $eflags
+1216B	  JMP_1 %bb.8
+
+1232B	bb.8.for.body51.preheader:
+	; predecessors: %bb.7
+	  successors: %bb.9(0x80000000); %bb.9(100.00%)
+
+1248B	  undef %38.sub_32bit:gr64_nosp = MOV32r0 implicit-def dead $eflags
+
+1296B	bb.9.for.body51:
+	; predecessors: %bb.8, %bb.11
+	  successors: %bb.11(0x30000000), %bb.10(0x50000000); %bb.11(37.50%), %bb.10(62.50%)
+
+1328B	  %10:gr64 = MOV64rm %0:gr64, 8, %38:gr64_nosp, 0, $noreg :: (load (s64) from %ir.uglygep, !tbaa !9)
+1344B	  TEST64rr %10:gr64, %10:gr64, implicit-def $eflags
+1360B	  JCC_1 %bb.11, 4, implicit killed $eflags
+1376B	  JMP_1 %bb.10
+
+1392B	bb.10.delete.notnull:
+	; predecessors: %bb.9
+	  successors: %bb.11(0x80000000); %bb.11(100.00%)
+
+1408B	  ADJCALLSTACKDOWN64 0, 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+1424B	  $rdi = COPY %10:gr64
+1440B	  CALL64pcrel32 target-flags(x86-plt) @_ZdaPv, <regmask $bh $bl $bp $bph $bpl $bx $ebp $ebx $hbp $hbx $rbp $rbx $r12 $r13 $r14 $r15 $r12b $r13b $r14b $r15b $r12bh $r13bh $r14bh $r15bh $r12d $r13d $r14d $r15d $r12w $r13w $r14w $r15w $r12wh and 3 more...>, implicit $rsp, implicit $ssp, implicit killed $rdi, implicit-def $rsp, implicit-def $ssp
+1456B	  ADJCALLSTACKUP64 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+
+1472B	bb.11.for.inc54:
+	; predecessors: %bb.9, %bb.10
+	  successors: %bb.12(0x04000000), %bb.9(0x7c000000); %bb.12(3.12%), %bb.9(96.88%)
+
+1504B	  %38:gr64_nosp = nuw nsw INC64r %38:gr64_nosp(tied-def 0), implicit-def dead $eflags
+1520B	  CMP64ri32 %38:gr64_nosp, 2048, implicit-def $eflags
+1552B	  JCC_1 %bb.9, 5, implicit killed $eflags
+1568B	  JMP_1 %bb.12
+
+1584B	bb.12.delete.notnull58:
+	; predecessors: %bb.11
+
+1600B	  ADJCALLSTACKDOWN64 0, 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+1616B	  $rdi = COPY %0:gr64
+1632B	  CALL64pcrel32 target-flags(x86-plt) @_ZdaPv, <regmask $bh $bl $bp $bph $bpl $bx $ebp $ebx $hbp $hbx $rbp $rbx $r12 $r13 $r14 $r15 $r12b $r13b $r14b $r15b $r12bh $r13bh $r14bh $r15bh $r12d $r13d $r14d $r15d $r12w $r13w $r14w $r15w $r12wh and 3 more...>, implicit $rsp, implicit $ssp, implicit killed $rdi, implicit-def $rsp, implicit-def $ssp
+1648B	  ADJCALLSTACKUP64 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+1680B	  $eax = MOV32r0 implicit-def dead $eflags
+1696B	  RET 0, killed $eax
+
+# End machine code for function main.
+
+********** GREEDY REGISTER ALLOCATION **********
+********** Function: main
+********** INTERVALS **********
+%0 [96r,1616r:0) 0@96r  weight:5.731881e-01
+%10 [1328r,1424r:0) 0@1328r  weight:1.702848e-01
+%17 [464r,480r:0) 0@464r  weight:INF
+%24 [928r,960r:0) 0@928r  weight:4.787564e+00
+%25 [944r,960r:0) 0@944r  weight:INF
+%34 [112r,208B:0)[368B,512r:2)[512r,592B:1) 0@112r 1@512r 2@368B-phi  weight:3.565460e-01
+%35 [304r,368B:0)[592B,704r:2)[704r,784B:1)[848B,1072B:2) 0@304r 1@704r 2@592B-phi  weight:1.421412e+00
+%36 [640r,672B:0)[848B,992r:2)[992r,1072B:1) 0@640r 1@992r 2@848B-phi  weight:1.257320e+01
+%37 [800r,848B:0)[1072B,1168r:2)[1168r,1232B:1) 0@800r 1@1168r 2@1072B-phi  weight:3.172442e-01
+%38 [1248r,1296B:0)[1296B,1504r:2)[1504r,1584B:1) 0@1248r 1@1504r 2@1296B-phi  weight:3.487738e-01
+RegMasks: 64r 272r 432r 896r 1120r 1440r 1632r
+********** MACHINEINSTRS **********
+# Machine code for function main: NoPHIs, TracksLiveness, TiedOpsRewritten, TracksDebugUserValues
+
+0B	bb.0.entry:
+	  successors: %bb.2(0x80000000); %bb.2(100.00%)
+
+16B	  ADJCALLSTACKDOWN64 0, 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+48B	  $rdi = MOV32ri64 16384
+64B	  CALL64pcrel32 target-flags(x86-plt) @_Znam, <regmask $bh $bl $bp $bph $bpl $bx $ebp $ebx $hbp $hbx $rbp $rbx $r12 $r13 $r14 $r15 $r12b $r13b $r14b $r15b $r12bh $r13bh $r14bh $r15bh $r12d $r13d $r14d $r15d $r12w $r13w $r14w $r15w $r12wh and 3 more...>, implicit $rsp, implicit $ssp, implicit killed $rdi, implicit-def $rsp, implicit-def $ssp, implicit-def $rax
+80B	  ADJCALLSTACKUP64 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+96B	  %0:gr64 = COPY killed $rax
+112B	  undef %34.sub_32bit:gr64_nosp = MOV32r0 implicit-def dead $eflags
+192B	  JMP_1 %bb.2
+
+208B	bb.1.for.cond.cleanup:
+	; predecessors: %bb.2
+	  successors: %bb.3(0x80000000); %bb.3(100.00%)
+
+224B	  ADJCALLSTACKDOWN64 0, 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+256B	  $edi = MOV32ri 1337
+272B	  CALL64pcrel32 target-flags(x86-plt) @srand, <regmask $bh $bl $bp $bph $bpl $bx $ebp $ebx $hbp $hbx $rbp $rbx $r12 $r13 $r14 $r15 $r12b $r13b $r14b $r15b $r12bh $r13bh $r14bh $r15bh $r12d $r13d $r14d $r15d $r12w $r13w $r14w $r15w $r12wh and 3 more...>, implicit $rsp, implicit $ssp, implicit killed $edi, implicit-def $rsp, implicit-def $ssp
+288B	  ADJCALLSTACKUP64 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+304B	  undef %35.sub_32bit:gr64_nosp = MOV32r0 implicit-def dead $eflags
+352B	  JMP_1 %bb.3
+
+368B	bb.2.for.body:
+	; predecessors: %bb.0, %bb.2
+	  successors: %bb.1(0x04000000), %bb.2(0x7c000000); %bb.1(3.12%), %bb.2(96.88%)
+
+400B	  ADJCALLSTACKDOWN64 0, 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+416B	  $rdi = MOV32ri64 8192
+432B	  CALL64pcrel32 target-flags(x86-plt) @_Znam, <regmask $bh $bl $bp $bph $bpl $bx $ebp $ebx $hbp $hbx $rbp $rbx $r12 $r13 $r14 $r15 $r12b $r13b $r14b $r15b $r12bh $r13bh $r14bh $r15bh $r12d $r13d $r14d $r15d $r12w $r13w $r14w $r15w $r12wh and 3 more...>, implicit $rsp, implicit $ssp, implicit killed $rdi, implicit-def $rsp, implicit-def $ssp, implicit-def $rax
+448B	  ADJCALLSTACKUP64 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+464B	  %17:gr64 = COPY killed $rax
+480B	  MOV64mr %0:gr64, 8, %34:gr64_nosp, 0, $noreg, %17:gr64 :: (store (s64) into %ir.uglygep111, !tbaa !9)
+512B	  %34:gr64_nosp = nuw nsw INC64r %34:gr64_nosp(tied-def 0), implicit-def dead $eflags
+528B	  CMP64ri32 %34:gr64_nosp, 2048, implicit-def $eflags
+560B	  JCC_1 %bb.1, 4, implicit killed $eflags
+576B	  JMP_1 %bb.2
+
+592B	bb.3.for.cond9.preheader:
+	; predecessors: %bb.1, %bb.4
+	  successors: %bb.6(0x80000000); %bb.6(100.00%)
+
+640B	  undef %36.sub_32bit:gr64_nosp = MOV32r0 implicit-def dead $eflags
+656B	  JMP_1 %bb.6
+
+672B	bb.4.for.cond.cleanup11:
+	; predecessors: %bb.6
+	  successors: %bb.5(0x04000000), %bb.3(0x7c000000); %bb.5(3.12%), %bb.3(96.88%)
+
+704B	  %35:gr64_nosp = nuw nsw INC64r %35:gr64_nosp(tied-def 0), implicit-def dead $eflags
+720B	  CMP64ri32 %35:gr64_nosp, 2048, implicit-def $eflags
+752B	  JCC_1 %bb.3, 5, implicit killed $eflags
+768B	  JMP_1 %bb.5
+
+784B	bb.5.for.body28.preheader:
+	; predecessors: %bb.4
+	  successors: %bb.7(0x80000000); %bb.7(100.00%)
+
+800B	  %37:gr64 = MOV32ri64 2048
+832B	  JMP_1 %bb.7
+
+848B	bb.6.for.body12:
+	; predecessors: %bb.3, %bb.6
+	  successors: %bb.4(0x04000000), %bb.6(0x7c000000); %bb.4(3.12%), %bb.6(96.88%)
+
+880B	  ADJCALLSTACKDOWN64 0, 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+896B	  CALL64pcrel32 target-flags(x86-plt) @rand, <regmask $bh $bl $bp $bph $bpl $bx $ebp $ebx $hbp $hbx $rbp $rbx $r12 $r13 $r14 $r15 $r12b $r13b $r14b $r15b $r12bh $r13bh $r14bh $r15bh $r12d $r13d $r14d $r15d $r12w $r13w $r14w $r15w $r12wh and 3 more...>, implicit $rsp, implicit $ssp, implicit-def $rsp, implicit-def $ssp, implicit-def $eax
+912B	  ADJCALLSTACKUP64 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+928B	  %24:gr32 = COPY killed $eax
+944B	  %25:gr64 = MOV64rm %0:gr64, 8, %35:gr64_nosp, 0, $noreg :: (load (s64) from %ir.sunkaddr112, !tbaa !9)
+960B	  MOV32mr %25:gr64, 4, %36:gr64_nosp, 0, $noreg, %24:gr32 :: (store (s32) into %ir.uglygep110, !tbaa !5)
+992B	  %36:gr64_nosp = nuw nsw INC64r %36:gr64_nosp(tied-def 0), implicit-def dead $eflags
+1008B	  CMP64ri32 %36:gr64_nosp, 2048, implicit-def $eflags
+1040B	  JCC_1 %bb.4, 4, implicit killed $eflags
+1056B	  JMP_1 %bb.6
+
+1072B	bb.7.for.body28:
+	; predecessors: %bb.5, %bb.7
+	  successors: %bb.8(0x04000000), %bb.7(0x7c000000); %bb.8(3.12%), %bb.7(96.88%)
+
+1104B	  ADJCALLSTACKDOWN64 0, 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+1120B	  CALL64pcrel32 target-flags(x86-plt) @rand, <regmask $bh $bl $bp $bph $bpl $bx $ebp $ebx $hbp $hbx $rbp $rbx $r12 $r13 $r14 $r15 $r12b $r13b $r14b $r15b $r12bh $r13bh $r14bh $r15bh $r12d $r13d $r14d $r15d $r12w $r13w $r14w $r15w $r12wh and 3 more...>, implicit $rsp, implicit $ssp, implicit-def $rsp, implicit-def $ssp, implicit-def dead $eax
+1136B	  ADJCALLSTACKUP64 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+1168B	  %37:gr64 = DEC64r %37:gr64(tied-def 0), implicit-def $eflags
+1200B	  JCC_1 %bb.7, 5, implicit killed $eflags
+1216B	  JMP_1 %bb.8
+
+1232B	bb.8.for.body51.preheader:
+	; predecessors: %bb.7
+	  successors: %bb.9(0x80000000); %bb.9(100.00%)
+
+1248B	  undef %38.sub_32bit:gr64_nosp = MOV32r0 implicit-def dead $eflags
+
+1296B	bb.9.for.body51:
+	; predecessors: %bb.8, %bb.11
+	  successors: %bb.11(0x30000000), %bb.10(0x50000000); %bb.11(37.50%), %bb.10(62.50%)
+
+1328B	  %10:gr64 = MOV64rm %0:gr64, 8, %38:gr64_nosp, 0, $noreg :: (load (s64) from %ir.uglygep, !tbaa !9)
+1344B	  TEST64rr %10:gr64, %10:gr64, implicit-def $eflags
+1360B	  JCC_1 %bb.11, 4, implicit killed $eflags
+1376B	  JMP_1 %bb.10
+
+1392B	bb.10.delete.notnull:
+	; predecessors: %bb.9
+	  successors: %bb.11(0x80000000); %bb.11(100.00%)
+
+1408B	  ADJCALLSTACKDOWN64 0, 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+1424B	  $rdi = COPY %10:gr64
+1440B	  CALL64pcrel32 target-flags(x86-plt) @_ZdaPv, <regmask $bh $bl $bp $bph $bpl $bx $ebp $ebx $hbp $hbx $rbp $rbx $r12 $r13 $r14 $r15 $r12b $r13b $r14b $r15b $r12bh $r13bh $r14bh $r15bh $r12d $r13d $r14d $r15d $r12w $r13w $r14w $r15w $r12wh and 3 more...>, implicit $rsp, implicit $ssp, implicit killed $rdi, implicit-def $rsp, implicit-def $ssp
+1456B	  ADJCALLSTACKUP64 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+
+1472B	bb.11.for.inc54:
+	; predecessors: %bb.9, %bb.10
+	  successors: %bb.12(0x04000000), %bb.9(0x7c000000); %bb.12(3.12%), %bb.9(96.88%)
+
+1504B	  %38:gr64_nosp = nuw nsw INC64r %38:gr64_nosp(tied-def 0), implicit-def dead $eflags
+1520B	  CMP64ri32 %38:gr64_nosp, 2048, implicit-def $eflags
+1552B	  JCC_1 %bb.9, 5, implicit killed $eflags
+1568B	  JMP_1 %bb.12
+
+1584B	bb.12.delete.notnull58:
+	; predecessors: %bb.11
+
+1600B	  ADJCALLSTACKDOWN64 0, 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+1616B	  $rdi = COPY %0:gr64
+1632B	  CALL64pcrel32 target-flags(x86-plt) @_ZdaPv, <regmask $bh $bl $bp $bph $bpl $bx $ebp $ebx $hbp $hbx $rbp $rbx $r12 $r13 $r14 $r15 $r12b $r13b $r14b $r15b $r12bh $r13bh $r14bh $r15bh $r12d $r13d $r14d $r15d $r12w $r13w $r14w $r15w $r12wh and 3 more...>, implicit $rsp, implicit $ssp, implicit killed $rdi, implicit-def $rsp, implicit-def $ssp
+1648B	  ADJCALLSTACKUP64 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+1680B	  $eax = MOV32r0 implicit-def dead $eflags
+1696B	  RET 0, killed $eax
+
+# End machine code for function main.
+
+Enqueuing %0
+Enqueuing %10
+Enqueuing %17
+Enqueuing %24
+Enqueuing %25
+Enqueuing %34
+Enqueuing %35
+Enqueuing %36
+Enqueuing %37
+Enqueuing %38
+
+selectOrSplit GR64:%0 [96r,1616r:0) 0@96r  weight:5.731881e-01 w=5.731881e-01
+Inside selectOrSplitImpl
+hints: $rax $rdi
+missed hint $rax
+assigning %0 to $rbx: BH [96r,1616r:0) 0@96r BL [96r,1616r:0) 0@96r HBX [96r,1616r:0) 0@96r
+
+selectOrSplit GR64:%10 [1328r,1424r:0) 0@1328r  weight:1.702848e-01 w=1.702848e-01
+Inside selectOrSplitImpl
+hints: $rdi
+assigning %10 to $rdi: DIL [1328r,1424r:0) 0@1328r DIH [1328r,1424r:0) 0@1328r HDI [1328r,1424r:0) 0@1328r
+
+selectOrSplit GR64:%17 [464r,480r:0) 0@464r  weight:INF w=INF
+Inside selectOrSplitImpl
+hints: $rax
+assigning %17 to $rax: AH [464r,480r:0) 0@464r AL [464r,480r:0) 0@464r HAX [464r,480r:0) 0@464r
+
+selectOrSplit GR32:%24 [928r,960r:0) 0@928r  weight:4.787564e+00 w=4.787564e+00
+Inside selectOrSplitImpl
+hints: $eax
+assigning %24 to $eax: AH [928r,960r:0) 0@928r AL [928r,960r:0) 0@928r HAX [928r,960r:0) 0@928r
+
+selectOrSplit GR64_NOSP:%35 [304r,368B:0)[592B,704r:2)[704r,784B:1)[848B,1072B:2) 0@304r 1@704r 2@592B-phi  weight:1.421412e+00 w=1.421412e+00
+Inside selectOrSplitImpl
+assigning %35 to $r14: R14B [304r,368B:0)[592B,704r:2)[704r,784B:1)[848B,1072B:2) 0@304r 1@704r 2@592B-phi R14BH [304r,368B:0)[592B,704r:2)[704r,784B:1)[848B,1072B:2) 0@304r 1@704r 2@592B-phi R14WH [304r,368B:0)[592B,704r:2)[704r,784B:1)[848B,1072B:2) 0@304r 1@704r 2@592B-phi
+
+selectOrSplit GR64_NOSP:%38 [1248r,1296B:0)[1296B,1504r:2)[1504r,1584B:1) 0@1248r 1@1504r 2@1296B-phi  weight:3.487738e-01 w=3.487738e-01
+Inside selectOrSplitImpl
+assigning %38 to $r14: R14B [1248r,1296B:0)[1296B,1504r:2)[1504r,1584B:1) 0@1248r 1@1504r 2@1296B-phi R14BH [1248r,1296B:0)[1296B,1504r:2)[1504r,1584B:1) 0@1248r 1@1504r 2@1296B-phi R14WH [1248r,1296B:0)[1296B,1504r:2)[1504r,1584B:1) 0@1248r 1@1504r 2@1296B-phi
+
+selectOrSplit GR64_NOSP:%34 [112r,208B:0)[368B,512r:2)[512r,592B:1) 0@112r 1@512r 2@368B-phi  weight:3.565460e-01 w=3.565460e-01
+Inside selectOrSplitImpl
+assigning %34 to $r14: R14B [112r,208B:0)[368B,512r:2)[512r,592B:1) 0@112r 1@512r 2@368B-phi R14BH [112r,208B:0)[368B,512r:2)[512r,592B:1) 0@112r 1@512r 2@368B-phi R14WH [112r,208B:0)[368B,512r:2)[512r,592B:1) 0@112r 1@512r 2@368B-phi
+
+selectOrSplit GR64_NOSP:%36 [640r,672B:0)[848B,992r:2)[992r,1072B:1) 0@640r 1@992r 2@848B-phi  weight:1.257320e+01 w=1.257320e+01
+Inside selectOrSplitImpl
+assigning %36 to $r15: R15B [640r,672B:0)[848B,992r:2)[992r,1072B:1) 0@640r 1@992r 2@848B-phi R15BH [640r,672B:0)[848B,992r:2)[992r,1072B:1) 0@640r 1@992r 2@848B-phi R15WH [640r,672B:0)[848B,992r:2)[992r,1072B:1) 0@640r 1@992r 2@848B-phi
+
+selectOrSplit GR64:%37 [800r,848B:0)[1072B,1168r:2)[1168r,1232B:1) 0@800r 1@1168r 2@1072B-phi  weight:3.172442e-01 w=3.172442e-01
+Inside selectOrSplitImpl
+assigning %37 to $r14: R14B [800r,848B:0)[1072B,1168r:2)[1168r,1232B:1) 0@800r 1@1168r 2@1072B-phi R14BH [800r,848B:0)[1072B,1168r:2)[1168r,1232B:1) 0@800r 1@1168r 2@1072B-phi R14WH [800r,848B:0)[1072B,1168r:2)[1168r,1232B:1) 0@800r 1@1168r 2@1072B-phi
+
+selectOrSplit GR64:%25 [944r,960r:0) 0@944r  weight:INF w=INF
+Inside selectOrSplitImpl
+assigning %25 to $rcx: CH [944r,960r:0) 0@944r CL [944r,960r:0) 0@944r HCX [944r,960r:0) 0@944r
+Trying to reconcile hints for: %0($rbx)
+%0($rbx) is recolorable.
+Inside intial reportStats
+********** REWRITE VIRTUAL REGISTERS **********
+********** Function: main
+********** REGISTER MAP **********
+[%0 -> $rbx] GR64
+[%10 -> $rdi] GR64
+[%17 -> $rax] GR64
+[%24 -> $eax] GR32
+[%25 -> $rcx] GR64
+[%34 -> $r14] GR64_NOSP
+[%35 -> $r14] GR64_NOSP
+[%36 -> $r15] GR64_NOSP
+[%37 -> $r14] GR64
+[%38 -> $r14] GR64_NOSP
+
+0B	bb.0.entry:
+	  successors: %bb.2(0x80000000); %bb.2(100.00%)
+
+16B	  ADJCALLSTACKDOWN64 0, 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+48B	  $rdi = MOV32ri64 16384
+64B	  CALL64pcrel32 target-flags(x86-plt) @_Znam, <regmask $bh $bl $bp $bph $bpl $bx $ebp $ebx $hbp $hbx $rbp $rbx $r12 $r13 $r14 $r15 $r12b $r13b $r14b $r15b $r12bh $r13bh $r14bh $r15bh $r12d $r13d $r14d $r15d $r12w $r13w $r14w $r15w $r12wh and 3 more...>, implicit $rsp, implicit $ssp, implicit $rdi, implicit-def $rsp, implicit-def $ssp, implicit-def $rax
+80B	  ADJCALLSTACKUP64 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+96B	  %0:gr64 = COPY $rax
+112B	  undef %34.sub_32bit:gr64_nosp = MOV32r0 implicit-def dead $eflags
+192B	  JMP_1 %bb.2
+> ADJCALLSTACKDOWN64 0, 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+> $rdi = MOV32ri64 16384
+> CALL64pcrel32 target-flags(x86-plt) @_Znam, <regmask $bh $bl $bp $bph $bpl $bx $ebp $ebx $hbp $hbx $rbp $rbx $r12 $r13 $r14 $r15 $r12b $r13b $r14b $r15b $r12bh $r13bh $r14bh $r15bh $r12d $r13d $r14d $r15d $r12w $r13w $r14w $r15w $r12wh and 3 more...>, implicit $rsp, implicit $ssp, implicit $rdi, implicit-def $rsp, implicit-def $ssp, implicit-def $rax
+> ADJCALLSTACKUP64 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+> renamable $rbx = COPY $rax
+> renamable $r14d = MOV32r0 implicit-def dead $eflags, implicit-def $r14
+> JMP_1 %bb.2
+208B	bb.1.for.cond.cleanup:
+	; predecessors: %bb.2
+	  successors: %bb.3(0x80000000); %bb.3(100.00%)
+	  liveins: $rbx
+224B	  ADJCALLSTACKDOWN64 0, 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+256B	  $edi = MOV32ri 1337
+272B	  CALL64pcrel32 target-flags(x86-plt) @srand, <regmask $bh $bl $bp $bph $bpl $bx $ebp $ebx $hbp $hbx $rbp $rbx $r12 $r13 $r14 $r15 $r12b $r13b $r14b $r15b $r12bh $r13bh $r14bh $r15bh $r12d $r13d $r14d $r15d $r12w $r13w $r14w $r15w $r12wh and 3 more...>, implicit $rsp, implicit $ssp, implicit $edi, implicit-def $rsp, implicit-def $ssp
+288B	  ADJCALLSTACKUP64 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+304B	  undef %35.sub_32bit:gr64_nosp = MOV32r0 implicit-def dead $eflags
+352B	  JMP_1 %bb.3
+> ADJCALLSTACKDOWN64 0, 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+> $edi = MOV32ri 1337
+> CALL64pcrel32 target-flags(x86-plt) @srand, <regmask $bh $bl $bp $bph $bpl $bx $ebp $ebx $hbp $hbx $rbp $rbx $r12 $r13 $r14 $r15 $r12b $r13b $r14b $r15b $r12bh $r13bh $r14bh $r15bh $r12d $r13d $r14d $r15d $r12w $r13w $r14w $r15w $r12wh and 3 more...>, implicit $rsp, implicit $ssp, implicit $edi, implicit-def $rsp, implicit-def $ssp
+> ADJCALLSTACKUP64 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+> renamable $r14d = MOV32r0 implicit-def dead $eflags, implicit-def $r14
+> JMP_1 %bb.3
+368B	bb.2.for.body:
+	; predecessors: %bb.0, %bb.2
+	  successors: %bb.1(0x04000000), %bb.2(0x7c000000); %bb.1(3.12%), %bb.2(96.88%)
+	  liveins: $rbx, $r14
+400B	  ADJCALLSTACKDOWN64 0, 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+416B	  $rdi = MOV32ri64 8192
+432B	  CALL64pcrel32 target-flags(x86-plt) @_Znam, <regmask $bh $bl $bp $bph $bpl $bx $ebp $ebx $hbp $hbx $rbp $rbx $r12 $r13 $r14 $r15 $r12b $r13b $r14b $r15b $r12bh $r13bh $r14bh $r15bh $r12d $r13d $r14d $r15d $r12w $r13w $r14w $r15w $r12wh and 3 more...>, implicit $rsp, implicit $ssp, implicit $rdi, implicit-def $rsp, implicit-def $ssp, implicit-def $rax
+448B	  ADJCALLSTACKUP64 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+464B	  %17:gr64 = COPY $rax
+480B	  MOV64mr %0:gr64, 8, %34:gr64_nosp, 0, $noreg, killed %17:gr64 :: (store (s64) into %ir.uglygep111, !tbaa !9)
+512B	  %34:gr64_nosp = nuw nsw INC64r killed %34:gr64_nosp(tied-def 0), implicit-def dead $eflags
+528B	  CMP64ri32 %34:gr64_nosp, 2048, implicit-def $eflags
+560B	  JCC_1 %bb.1, 4, implicit killed $eflags
+576B	  JMP_1 %bb.2
+> ADJCALLSTACKDOWN64 0, 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+> $rdi = MOV32ri64 8192
+> CALL64pcrel32 target-flags(x86-plt) @_Znam, <regmask $bh $bl $bp $bph $bpl $bx $ebp $ebx $hbp $hbx $rbp $rbx $r12 $r13 $r14 $r15 $r12b $r13b $r14b $r15b $r12bh $r13bh $r14bh $r15bh $r12d $r13d $r14d $r15d $r12w $r13w $r14w $r15w $r12wh and 3 more...>, implicit $rsp, implicit $ssp, implicit $rdi, implicit-def $rsp, implicit-def $ssp, implicit-def $rax
+> ADJCALLSTACKUP64 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+> renamable $rax = COPY $rax
+Identity copy: renamable $rax = COPY $rax
+  deleted.
+> MOV64mr renamable $rbx, 8, renamable $r14, 0, $noreg, killed renamable $rax :: (store (s64) into %ir.uglygep111, !tbaa !9)
+> renamable $r14 = nuw nsw INC64r killed renamable $r14(tied-def 0), implicit-def dead $eflags
+> CMP64ri32 renamable $r14, 2048, implicit-def $eflags
+> JCC_1 %bb.1, 4, implicit killed $eflags
+> JMP_1 %bb.2
+592B	bb.3.for.cond9.preheader:
+	; predecessors: %bb.1, %bb.4
+	  successors: %bb.6(0x80000000); %bb.6(100.00%)
+	  liveins: $rbx, $r14
+640B	  undef %36.sub_32bit:gr64_nosp = MOV32r0 implicit-def dead $eflags
+656B	  JMP_1 %bb.6
+> renamable $r15d = MOV32r0 implicit-def dead $eflags, implicit-def $r15
+> JMP_1 %bb.6
+672B	bb.4.for.cond.cleanup11:
+	; predecessors: %bb.6
+	  successors: %bb.5(0x04000000), %bb.3(0x7c000000); %bb.5(3.12%), %bb.3(96.88%)
+	  liveins: $rbx, $r14
+704B	  %35:gr64_nosp = nuw nsw INC64r killed %35:gr64_nosp(tied-def 0), implicit-def dead $eflags
+720B	  CMP64ri32 %35:gr64_nosp, 2048, implicit-def $eflags
+752B	  JCC_1 %bb.3, 5, implicit killed $eflags
+768B	  JMP_1 %bb.5
+> renamable $r14 = nuw nsw INC64r killed renamable $r14(tied-def 0), implicit-def dead $eflags
+> CMP64ri32 renamable $r14, 2048, implicit-def $eflags
+> JCC_1 %bb.3, 5, implicit killed $eflags
+> JMP_1 %bb.5
+784B	bb.5.for.body28.preheader:
+	; predecessors: %bb.4
+	  successors: %bb.7(0x80000000); %bb.7(100.00%)
+	  liveins: $rbx
+800B	  %37:gr64 = MOV32ri64 2048
+832B	  JMP_1 %bb.7
+> renamable $r14 = MOV32ri64 2048
+> JMP_1 %bb.7
+848B	bb.6.for.body12:
+	; predecessors: %bb.3, %bb.6
+	  successors: %bb.4(0x04000000), %bb.6(0x7c000000); %bb.4(3.12%), %bb.6(96.88%)
+	  liveins: $rbx, $r14, $r15
+880B	  ADJCALLSTACKDOWN64 0, 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+896B	  CALL64pcrel32 target-flags(x86-plt) @rand, <regmask $bh $bl $bp $bph $bpl $bx $ebp $ebx $hbp $hbx $rbp $rbx $r12 $r13 $r14 $r15 $r12b $r13b $r14b $r15b $r12bh $r13bh $r14bh $r15bh $r12d $r13d $r14d $r15d $r12w $r13w $r14w $r15w $r12wh and 3 more...>, implicit $rsp, implicit $ssp, implicit-def $rsp, implicit-def $ssp, implicit-def $eax
+912B	  ADJCALLSTACKUP64 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+928B	  %24:gr32 = COPY $eax
+944B	  %25:gr64 = MOV64rm %0:gr64, 8, %35:gr64_nosp, 0, $noreg :: (load (s64) from %ir.sunkaddr112, !tbaa !9)
+960B	  MOV32mr killed %25:gr64, 4, %36:gr64_nosp, 0, $noreg, killed %24:gr32 :: (store (s32) into %ir.uglygep110, !tbaa !5)
+992B	  %36:gr64_nosp = nuw nsw INC64r killed %36:gr64_nosp(tied-def 0), implicit-def dead $eflags
+1008B	  CMP64ri32 %36:gr64_nosp, 2048, implicit-def $eflags
+1040B	  JCC_1 %bb.4, 4, implicit killed $eflags
+1056B	  JMP_1 %bb.6
+> ADJCALLSTACKDOWN64 0, 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+> CALL64pcrel32 target-flags(x86-plt) @rand, <regmask $bh $bl $bp $bph $bpl $bx $ebp $ebx $hbp $hbx $rbp $rbx $r12 $r13 $r14 $r15 $r12b $r13b $r14b $r15b $r12bh $r13bh $r14bh $r15bh $r12d $r13d $r14d $r15d $r12w $r13w $r14w $r15w $r12wh and 3 more...>, implicit $rsp, implicit $ssp, implicit-def $rsp, implicit-def $ssp, implicit-def $eax
+> ADJCALLSTACKUP64 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+> renamable $eax = COPY $eax
+Identity copy: renamable $eax = COPY $eax
+  deleted.
+> renamable $rcx = MOV64rm renamable $rbx, 8, renamable $r14, 0, $noreg :: (load (s64) from %ir.sunkaddr112, !tbaa !9)
+> MOV32mr killed renamable $rcx, 4, renamable $r15, 0, $noreg, killed renamable $eax :: (store (s32) into %ir.uglygep110, !tbaa !5)
+> renamable $r15 = nuw nsw INC64r killed renamable $r15(tied-def 0), implicit-def dead $eflags
+> CMP64ri32 renamable $r15, 2048, implicit-def $eflags
+> JCC_1 %bb.4, 4, implicit killed $eflags
+> JMP_1 %bb.6
+1072B	bb.7.for.body28:
+	; predecessors: %bb.5, %bb.7
+	  successors: %bb.8(0x04000000), %bb.7(0x7c000000); %bb.8(3.12%), %bb.7(96.88%)
+	  liveins: $rbx, $r14
+1104B	  ADJCALLSTACKDOWN64 0, 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+1120B	  CALL64pcrel32 target-flags(x86-plt) @rand, <regmask $bh $bl $bp $bph $bpl $bx $ebp $ebx $hbp $hbx $rbp $rbx $r12 $r13 $r14 $r15 $r12b $r13b $r14b $r15b $r12bh $r13bh $r14bh $r15bh $r12d $r13d $r14d $r15d $r12w $r13w $r14w $r15w $r12wh and 3 more...>, implicit $rsp, implicit $ssp, implicit-def $rsp, implicit-def $ssp, implicit-def dead $eax
+1136B	  ADJCALLSTACKUP64 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+1168B	  %37:gr64 = DEC64r killed %37:gr64(tied-def 0), implicit-def $eflags
+1200B	  JCC_1 %bb.7, 5, implicit killed $eflags
+1216B	  JMP_1 %bb.8
+> ADJCALLSTACKDOWN64 0, 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+> CALL64pcrel32 target-flags(x86-plt) @rand, <regmask $bh $bl $bp $bph $bpl $bx $ebp $ebx $hbp $hbx $rbp $rbx $r12 $r13 $r14 $r15 $r12b $r13b $r14b $r15b $r12bh $r13bh $r14bh $r15bh $r12d $r13d $r14d $r15d $r12w $r13w $r14w $r15w $r12wh and 3 more...>, implicit $rsp, implicit $ssp, implicit-def $rsp, implicit-def $ssp, implicit-def dead $eax
+> ADJCALLSTACKUP64 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+> renamable $r14 = DEC64r killed renamable $r14(tied-def 0), implicit-def $eflags
+> JCC_1 %bb.7, 5, implicit killed $eflags
+> JMP_1 %bb.8
+1232B	bb.8.for.body51.preheader:
+	; predecessors: %bb.7
+	  successors: %bb.9(0x80000000); %bb.9(100.00%)
+	  liveins: $rbx
+1248B	  undef %38.sub_32bit:gr64_nosp = MOV32r0 implicit-def dead $eflags
+> renamable $r14d = MOV32r0 implicit-def dead $eflags, implicit-def $r14
+1296B	bb.9.for.body51:
+	; predecessors: %bb.8, %bb.11
+	  successors: %bb.11(0x30000000), %bb.10(0x50000000); %bb.11(37.50%), %bb.10(62.50%)
+	  liveins: $rbx, $r14
+1328B	  %10:gr64 = MOV64rm %0:gr64, 8, %38:gr64_nosp, 0, $noreg :: (load (s64) from %ir.uglygep, !tbaa !9)
+1344B	  TEST64rr %10:gr64, %10:gr64, implicit-def $eflags
+1360B	  JCC_1 %bb.11, 4, implicit killed $eflags
+1376B	  JMP_1 %bb.10
+> renamable $rdi = MOV64rm renamable $rbx, 8, renamable $r14, 0, $noreg :: (load (s64) from %ir.uglygep, !tbaa !9)
+> TEST64rr renamable $rdi, renamable $rdi, implicit-def $eflags
+> JCC_1 %bb.11, 4, implicit killed $eflags
+> JMP_1 %bb.10
+1392B	bb.10.delete.notnull:
+	; predecessors: %bb.9
+	  successors: %bb.11(0x80000000); %bb.11(100.00%)
+	  liveins: $rbx, $rdi, $r14
+1408B	  ADJCALLSTACKDOWN64 0, 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+1424B	  $rdi = COPY killed %10:gr64
+1440B	  CALL64pcrel32 target-flags(x86-plt) @_ZdaPv, <regmask $bh $bl $bp $bph $bpl $bx $ebp $ebx $hbp $hbx $rbp $rbx $r12 $r13 $r14 $r15 $r12b $r13b $r14b $r15b $r12bh $r13bh $r14bh $r15bh $r12d $r13d $r14d $r15d $r12w $r13w $r14w $r15w $r12wh and 3 more...>, implicit $rsp, implicit $ssp, implicit $rdi, implicit-def $rsp, implicit-def $ssp
+1456B	  ADJCALLSTACKUP64 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+> ADJCALLSTACKDOWN64 0, 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+> $rdi = COPY killed renamable $rdi
+Identity copy: $rdi = COPY killed renamable $rdi
+  deleted.
+> CALL64pcrel32 target-flags(x86-plt) @_ZdaPv, <regmask $bh $bl $bp $bph $bpl $bx $ebp $ebx $hbp $hbx $rbp $rbx $r12 $r13 $r14 $r15 $r12b $r13b $r14b $r15b $r12bh $r13bh $r14bh $r15bh $r12d $r13d $r14d $r15d $r12w $r13w $r14w $r15w $r12wh and 3 more...>, implicit $rsp, implicit $ssp, implicit $rdi, implicit-def $rsp, implicit-def $ssp
+> ADJCALLSTACKUP64 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+1472B	bb.11.for.inc54:
+	; predecessors: %bb.9, %bb.10
+	  successors: %bb.12(0x04000000), %bb.9(0x7c000000); %bb.12(3.12%), %bb.9(96.88%)
+	  liveins: $rbx, $r14
+1504B	  %38:gr64_nosp = nuw nsw INC64r killed %38:gr64_nosp(tied-def 0), implicit-def dead $eflags
+1520B	  CMP64ri32 %38:gr64_nosp, 2048, implicit-def $eflags
+1552B	  JCC_1 %bb.9, 5, implicit killed $eflags
+1568B	  JMP_1 %bb.12
+> renamable $r14 = nuw nsw INC64r killed renamable $r14(tied-def 0), implicit-def dead $eflags
+> CMP64ri32 renamable $r14, 2048, implicit-def $eflags
+> JCC_1 %bb.9, 5, implicit killed $eflags
+> JMP_1 %bb.12
+1584B	bb.12.delete.notnull58:
+	; predecessors: %bb.11
+	  liveins: $rbx
+1600B	  ADJCALLSTACKDOWN64 0, 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+1616B	  $rdi = COPY killed %0:gr64
+1632B	  CALL64pcrel32 target-flags(x86-plt) @_ZdaPv, <regmask $bh $bl $bp $bph $bpl $bx $ebp $ebx $hbp $hbx $rbp $rbx $r12 $r13 $r14 $r15 $r12b $r13b $r14b $r15b $r12bh $r13bh $r14bh $r15bh $r12d $r13d $r14d $r15d $r12w $r13w $r14w $r15w $r12wh and 3 more...>, implicit $rsp, implicit $ssp, implicit $rdi, implicit-def $rsp, implicit-def $ssp
+1648B	  ADJCALLSTACKUP64 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+1680B	  $eax = MOV32r0 implicit-def dead $eflags
+1696B	  RET 0, $eax
+> ADJCALLSTACKDOWN64 0, 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+> $rdi = COPY killed renamable $rbx
+> CALL64pcrel32 target-flags(x86-plt) @_ZdaPv, <regmask $bh $bl $bp $bph $bpl $bx $ebp $ebx $hbp $hbx $rbp $rbx $r12 $r13 $r14 $r15 $r12b $r13b $r14b $r15b $r12bh $r13bh $r14bh $r15bh $r12d $r13d $r14d $r15d $r12w $r13w $r14w $r15w $r12wh and 3 more...>, implicit $rsp, implicit $ssp, implicit $rdi, implicit-def $rsp, implicit-def $ssp
+> ADJCALLSTACKUP64 0, 0, implicit-def dead $rsp, implicit-def dead $eflags, implicit-def dead $ssp, implicit $rsp, implicit $ssp
+> $eax = MOV32r0 implicit-def dead $eflags
+> RET 0, $eax
